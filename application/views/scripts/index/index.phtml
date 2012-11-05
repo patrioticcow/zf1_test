@@ -1,0 +1,190 @@
+<div class="page_container">
+    <?php echo $this->messages; ?>
+    <div class="home_billboard_main">
+        <div id="home-billboard">
+            <div id="wrapper">
+                <div class="slider-wrapper theme-default">
+                    <div class="ribbon"></div>
+                    <div id="slider" class="nivoSlider">
+                        <a href="/about/explore-talent">
+                            <img src="<?php echo CDN_JS_CSS; ?>/graphics/billboards/homepagebanners_790x260_whats_new.jpg" alt="Welcome to the New Explore Talent Site"/></a>
+                        <a href="<?php echo $this->url(array(),'acting_route');?>">
+                            <img src="<?php echo CDN_JS_CSS; ?>/graphics/billboards/homepagebanners_790x260_auditions.jpg" alt="Auditions & Casting Calls"/></a>
+                        <a href="/industry/celebrities-exclusive-interviews">
+                            <img src="<?php echo CDN_JS_CSS; ?>/graphics/billboards/homepagebanners_790x260_celeb.jpg" alt="Meet our Celebrity Guests"/></a>
+                        <a href="/contests">
+                            <img src="<?php echo CDN_JS_CSS; ?>/graphics/billboards/homepagebanners_790x260_contests.jpg" alt="Explore Talent Contests"/></a>
+                        <a href="/join/flash">
+                            <img src="<?php echo CDN_JS_CSS; ?>/graphics/billboards/homepagebanners_790x260_general.jpg" alt="Join the Largest Community of Talents on the Web"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="auditions_search_section">
+        <div class="main_search">
+            <div class="mains_right">
+                <div class="mains_one"><span>65,252</span> Auditions &amp; Jobs</div>
+                <div class="mains_two">Submit yourself to Casting Calls right now!</div>
+            </div>
+            <div class="mains_left">
+                <?php $form = $this->auditionSearch; ?>
+                <form id="edit_acting_profile" action="/auditions" method="post">
+                    <table>
+                        <tr>
+                            <td colspan="3"><?php echo $form->checkbox1->renderViewHelper (); ?></td>
+                            <td rowspan="2"><input type="submit" name="search" id="search" value="Search" class="but_green">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><?php echo $form->zip->renderViewHelper (); ?></td>
+                            <td>OR</td>
+                            <td><?php echo $form->city->renderViewHelper (); ?></td>
+                        </tr>
+                    </table>
+                </form>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="middle_body">
+        <div class="auditions_tabs" id="tabs">
+            <ul class="auditions_ultabs">
+                <li class="tab_first color1">
+                    <a href="#tab-1" title="Acting Auditions">Acting</a>
+                    <span class="t1"></span>
+                </li>
+                <li class="color2">
+                    <a href="#tab-2" title="Modeling Auditions">Modeling</a>
+                    <span class="t2"></span>
+                </li>
+                <li class="color3">
+                    <a href="#tab-3" title="Musicians Jobs">Musicians</a>
+                    <span class="t3"></span>
+                </li>
+                <li class="color4">
+                    <a href="#tab-4" title="Dance Auditions">Dance</a>
+                    <span class="t4"></span>
+                </li>
+                <li class="tab_last color5">
+                    <a href="#tab-5" title="Crew Jobs">Crew</a>
+                    <span class="t5"></span>
+                </li>
+            </ul>
+
+            <div id="tab-1" style="float: left;">
+                <div id="acting-tab"></div>
+            </div>
+
+            <div id="tab-2" style="float: left;">
+                <div id="modeling-tab"></div>
+            </div>
+
+            <div id="tab-3" style="float: left;">
+                <div id="music-tab"></div>
+            </div>
+
+            <div id="tab-4" style="float: left;">
+                <div id="dance-tab"></div>
+            </div>
+
+            <div id="tab-5" style="float: left;">
+                <div id="crew-tab"></div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+
+    <?php
+    // random images
+    $advice = array("akon", "joan_rivers", "matt_damon", "piers_morgan", "ray_j", "snoop_dogg");
+    $stories = array("story1", "story1", "story1", "story1", "story1");
+
+    $randAdvice = array_rand ($advice);
+    $randStories = array_rand ($stories);
+    ?>
+    <div class="home_stories">
+        <div class="stories border_tiny">
+            <a href="/industry/celebrities-exclusive-interviews">
+                <div class="home_advice">Celebrity advice</div>
+            </a>
+            <a href="/industry/celebrities-exclusive-interviews">
+                <div class="home_image">
+                    <img class="lazy" data-original="<?php echo CDN_JS_CSS; ?>/graphics/homepage/<?php  echo $advice[$randAdvice];?>.jpg" src="<?php echo CDN_JS_CSS; ?>/graphics/icons/grey1.gif" width="214" height="134" alt="Celebrity Advice"/>
+                    <noscript><img src="<?php echo CDN_JS_CSS; ?>/graphics/homepage/<?php  echo $advice[$randAdvice];?>.jpg" width="214" height="134" alt="Celebrity Advice"></noscript>
+                </div>
+            </a>
+
+            <div class="home_text">Explore Talent has gathered some of the hottest actors, models, singers, dancers and
+                musicians in the world to share their insights and secrets for success
+            </div>
+        </div>
+        <div class="stories border_tiny">
+            <a href="/testimonials">
+                <div class="home_advice">Success stories</div>
+            </a>
+            <a href="/testimonials">
+                <div class="home_image">
+                    <img class="lazy" data-original="<?php echo CDN_JS_CSS; ?>/graphics/homepage/<?php  echo $stories[$randStories];?>.jpg" src="<?php echo CDN_JS_CSS; ?>/graphics/icons/grey1.gif" width="214" height="134" alt="Explore Talent Success Stories"/>
+                    <noscript><img src="<?php echo CDN_JS_CSS; ?>/graphics/homepage/<?php  echo $stories[$randStories];?>.jpg" width="214" height="134" alt="Explore Talent Success Stories"></noscript>
+                </div>
+            </a>
+
+            <div class="home_text">Watch and listen to ET members talk about their amazing experiences they have had by
+                being a member of ET and all the benefits that come with their valued membership.
+            </div>
+        </div>
+        <div class="stories_last border_tiny">
+            <a href="/about/faq">
+                <div class="home_advice">What is ExploreTalent?</div>
+            </a>
+
+            <div class="home_text"><span>ExploreTalent.com</span> Explore Talent is the worldwide leader in acting,
+                modeling, music, and dance auditions. With Explore Talent you have access to thousands of audition
+                opportunities including feature length films, reality TV, your favorite sitcoms, and so much more!
+                Do you find yourself spending hours looking, and not finding the industry work you need to jumpstart your
+                career? Look no further! Explore talent provides auditions, exposure, and the resources you need all in one
+                place.
+            </div>
+        </div>
+    </div>
+
+    <div style="clear:both;"></div>
+    <div class="home_contests border_tiny">
+        <div class="home_contests_title"><a href="<?php echo $this->url(array(),'acting_route');?>">Featured Auditions & Jobs</a></div>
+        <div class="home_all_contests">
+
+            <div class="home_individual_jobs">
+                <a href="/auditions/trade-school-commercial-nationwide_1249182"
+                   title="Fashion Models Needed In Hollywood">
+                    <img class="lazy" data-original="<?php echo CDN_JS_CSS; ?>/graphics/castings/4.jpg" src="<?php echo CDN_JS_CSS; ?>/graphics/icons/grey1.gif" width="250" height="120" alt="Fashion Models Needed"/>
+                    <noscript><img src="<?php echo CDN_JS_CSS; ?>/graphics/castings/4.jpg" width="250" height="120" alt="Fashion Models Needed"></noscript>
+                </a>
+            </div>
+            <div class="home_individual_jobs">
+                <a href="/auditions/baby-model-paid-nationwide_1249084"
+                   title="Need Actors for event-Burbank/Paramount">
+                    <img class="lazy" data-original="<?php echo CDN_JS_CSS; ?>/graphics/castings/5.jpg" src="<?php echo CDN_JS_CSS; ?>/graphics/icons/grey1.gif" width="250" height="120" alt="Major Bank Commercial"/>
+                    <noscript><img src="<?php echo CDN_JS_CSS; ?>/graphics/castings/5.jpg" width="250" height="120" alt="Major Bank Commercial"></noscript>
+                </a>
+            </div>
+            <div class="home_individual_jobs">
+                <a href="/auditions/fresh-face-modeling-campaign-nationwide_1251190"
+                   title="The Voice of the Prairie-Wayland">
+                    <img class="lazy" data-original="<?php echo CDN_JS_CSS; ?>/graphics/castings/6.jpg" src="<?php echo CDN_JS_CSS; ?>/graphics/icons/grey1.gif" width="250" height="120" alt="the Voice Auditions"/>
+                    <noscript><img src="<?php echo CDN_JS_CSS; ?>/graphics/castings/6.jpg" width="250" height="120" alt="Major Bank Commercial"></noscript>
+                </a>
+            </div>
+
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div style="clear:both;"></div>
+
+    <div id="contests_ajax"></div>
+    <div id="featured_ajax"></div>
+
+</div>

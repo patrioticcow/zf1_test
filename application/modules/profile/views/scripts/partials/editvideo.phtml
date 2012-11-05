@@ -1,0 +1,61 @@
+<?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'static','a'=>'act','b'=>'','c'=>'','d'=>'act','e'=>'','id'=>$this->userid,'type'=>$this->action_name)); ?>
+<br><br>
+<h1>
+	<a href="/profile/social/social-info/id/<?php echo $this->talentname['talentnum']; ?>"><?php echo $this->talentname['fname'].' '.$this->talentname['lname']?></a>
+</h1>
+ <script type="text/javascript">var playlist;</script>
+<h1>Edit <?php echo $this->title; ?> Video</h1>
+<div class="profile_content border_small">
+	<div class="main_detaild">
+		<div class="settings_title">Upload Video</div>
+		<p class="red">* the file will be available a few minutes after upload</p>
+		<?php echo $this->videoupload; ?>
+	</div>
+	<div style="clear:both"></div>
+	<br>
+	<?php if($this->videos){?>
+	<?php echo Media_Model_MediaAbstract::videoPlayer('jp_container_video_edit', 'video_jPlayer_video_edit', 'edit_acting_video') ?>
+		 <script type="text/javascript">
+		playlist =
+			[
+	            <?php foreach($this->videos as $val){?>
+	                    {
+	                        edit:  <?php echo json_encode('
+	                            <a href="/media/remove/'.$this->titlepath.'/video/'.USERID.'/'.$val->getVideoId().'" class="gbutton gright delete_media">Delete</a>
+	                        ');?>,
+	                        title:  <?php echo json_encode($val->getTitle());?>,
+	                        artist: <?php echo json_encode($val->getDes());?>,
+	                        poster: "<?php echo $val->getTalentnum()->folder.$val->getVideoId();?>.jpg",
+	                        thumb:  "<?php echo $val->getTalentnum()->folder.$val->getVideoId();?>.jpg",
+	                        flv:    "<?php echo $val->getTalentnum()->folder.$val->getVideoId();?>.flv"
+	                    },
+	            <?php }?>
+			];
+		</script>
+
+		 <script type="text/javascript">
+		$(document).ready(function(){
+
+			new jPlayerPlaylist({
+				jPlayer: "#video_jPlayer_video_edit",
+				cssSelectorAncestor: "#jp_container_video_edit"
+			}, playlist,
+			{
+				swfPath: "/js/jPlayer/",
+				supplied: "flv",
+				size: {
+					width: "576px",
+					height: "324px",
+					cssClass: "jp-video-video_edit"
+					}
+			});
+		});
+		</script>
+	<?php } else { ?>
+		<div class="et_notification et_info">
+			<div class="et_text">
+				 <p><strong>Info!</strong> No videos files. <p class="contact_cs">Contact <a href="/requests/index/contact" target="_blank">Customer Service</a> if you have any questions!"</p></p>
+			</div>
+		</div>
+	<?php } ?>
+</div>

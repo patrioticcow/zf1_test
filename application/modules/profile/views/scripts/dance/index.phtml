@@ -1,0 +1,139 @@
+<?php $tf1 = $this->info->getTalentInfo1(); $talentInfo2 = $this->info->getTalentInfo2(); $di = $this->danceinfo; ?>
+<?php echo $this->partial('partials/pagename.phtml', array( 'info' => $this->info, 'auth'=>$this->auth)); ?>
+<?php $gender = ''; if($tf1->getSex() != null && $tf1->getSex() != ''){$gender = $tf1->getSex();} ?>
+
+<div class="social_right">
+
+    <div>
+        Age <?php echo $tf1->getTalentnum()->age; ?>,
+	    <?php echo $gender; ?>,
+        from <?php echo $talentInfo2 != null ? $talentInfo2->getCity1() : 'n/a'; ?>
+    </div>
+    <br>
+    <div class="list_carousel border_tiny">
+        <ul id="foo0"><div class="loading_ajax"><img src="<?php echo CDN_JS_CSS; ?>/graphics/loading.gif" alt="Loading"/>Loading...</div></ul>
+        <div style="clear:both;"></div>
+    </div>
+
+    <h2>Dance Profile</h2>
+
+    <?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'static','a'=>'act','b'=>'','c'=>'','d'=>'','e'=>'','id'=>$this->info->getTalentnum(),'type'=>'dance')); ?>
+
+	<div class="profile_details border_small">
+        <div class="home_advice_green">General Info
+            <?php if(LOGGEDIN && (USERID == $this->notme)){  ?>
+                <a class="profile_details_edit" href="/profile/acting/edit/id/<?php echo $this->info->getTalentnum(); ?>" title="Edit Acting & Modeling Info">
+                    <span class="edit_profiles"></span>
+                </a>
+                <?php } ?>
+        </div>
+		<table>
+			<tr>
+				<td>
+					<span class="span_acting">Group Name</span>
+					<span class="span_acting_second"><?php echo $di != null ? $di->getGroupName() : 'n/a';?></span>
+				</td>
+				<td>
+					<span class="span_acting">Management</span>
+					<span class="span_acting_second"><?php echo $di != null ? $di->getManagement() : 'n/a';?></span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="span_acting"># People in Group</span>
+					<span class="span_acting_second"><?php echo  $di != null ? $di->getNumPplInGroup() : 'n/a';?></span>
+				</td>
+				<td>
+					<span class="span_acting">Style's</span>
+					<span class="span_acting_second"><?php if ($di){echo $di->_dance_style_1.', '.$di->_dance_style_2.', '.$di->_dance_style_3.', '.$di->_dance_style_4.' '.$di->_dance_style_5;}else{echo 'n/a';}?></span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="span_acting">Years Experience</span>
+					<span class="span_acting_second"><?php echo $di!= null ? $di->getYearsExperience() : 'n/a';?></span>
+				</td>
+				<td>
+					<span class="span_acting">Number of Gigs</span>
+					<span class="span_acting_second"><?php echo $di != null ? $di->getNumOfPerfom() : 'n/a';?></span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="span_acting">Website</span>
+					<span class="span_acting_second"><?php echo $di != null ? $di->getWebsite() : 'n/a';?></span>
+				</td>
+				<td>
+
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<?php if ($di){ ?>
+
+		<!-- Dancer Background -->
+		<?php if($di->getDancerBackground() != '' || $di->getDancerBackground() != null){?>
+			<div class="border_small">
+                <div class="home_advice_green">Dancer Background</div>
+				<p><?php echo $di->getDancerBackground();?></p>
+			</div>
+				<div style="clear:both"></div>
+		<?php } else { ?>
+		<?php if(USERID == $this->loggedinuser){?>
+			<a href="/profile/dance/edit/id/<?php echo USERID; ?>" class="gbutton gsmall" title="Add Dance Background Info">Add Dance Background Info</a>
+		<?php } }?>
+
+		<!-- Dancer Background -->
+		<?php if($di->getInfluences() != '' || $di->getInfluences() != null){?>
+			<div class="border_small">
+				<div class="home_advice_green">Influences</div>
+				<p><?php echo $di->getInfluences();?></p>
+			</div>
+			<div style="clear:both"></div>
+			<?php } else { ?>
+			<?php if(USERID == $this->loggedinuser){?>
+				<a href="/profile/dance/edit/id/<?php echo USERID; ?>" class="gbutton gsmall" title="Add Dance Influences">Add Dance Influences</a>
+		<?php } }?>
+
+		<!-- Gig Description -->
+		<?php if($di->getSearchingGigDes() != '' || $di->getSearchingGigDes() != null){?>
+			<div class="border_small">
+				<div class="home_advice_green">Gig Description</div>
+				<p><?php echo $di->getSearchingGigDes();?></p>
+			</div>
+			<div style="clear:both"></div>
+			<?php } else { ?>
+			<?php if(USERID == $this->loggedinuser){?>
+				<a href="/profile/dance/edit/id/<?php echo USERID; ?>" class="gbutton gsmall" title="Add Gig Description">Add Gig Description</a>
+		<?php } }?>
+
+	<?php } ?>
+
+	<!-- About Me -->
+	<?php if($this->about != '' || $this->about != null){?>
+		<div class="border_small">
+            <div class="home_advice_green">About Me</div>
+			<p><?php echo $this->about;?></p>
+		</div>
+		<div style="clear:both"></div>
+		<?php } else { ?>
+		<?php if(USERID == $this->loggedinuser){?>
+			<a href="/profile/dance/edit/id/<?php echo USERID; ?>" class="gbutton gsmall" title="About my Dancing Profile">Add About Me</a>
+	<?php } }?>
+
+	<!-- About Me -->
+	<?php if($this->resume != '' || $this->resume != null){?>
+		<div class="border_small">
+            <div class="home_advice_green">Short Resume</div>
+			<p><?php echo $this->resume;?></p>
+		</div>
+		<div style="clear:both"></div>
+		<?php } else { ?>
+		<?php if(USERID == $this->loggedinuser){?>
+			<a href="/profile/dance/edit/id/<?php echo USERID; ?>" class="gbutton gsmall" title="About my Dancing Resume">Add Short Resume</a>
+	<?php } }?>
+
+</div>
+
+<div id="general_talentnum" class="<?php echo $this->info->getTalentnum(); ?>"></div>

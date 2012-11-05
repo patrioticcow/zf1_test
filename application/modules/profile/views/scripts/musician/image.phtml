@@ -1,0 +1,12 @@
+<div class="social_right">
+	<?php echo $this->partial('partials/pagename.phtml', array( 'info' => $this->info, 'auth'=>$this->auth)); ?>
+	<?php echo $this->partial('partials/images.phtml',
+        array(
+             'title'=>'Musician Image Gallery',
+             'action'=>'musician',
+             'allimages'=>$this->allimages,
+             'userid'=>$this->userid,
+             'talentname'=>$this->talentname,
+             'action_name'=>$this->action_name
+        )); ?>
+</div>

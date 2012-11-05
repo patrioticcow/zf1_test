@@ -1,0 +1,105 @@
+<?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'static','a'=>'','b'=>'act','c'=>'','d'=>'','e'=>'','id'=>$this->userid,'type'=>$this->action_name)); ?>
+<br><br>
+<div id="edit_pictures">
+	<h2>Edit <?php echo $this->title; ?> Pictures</h2>
+
+	<ul class="nav">
+		<li class="nav-one border_small"><a href="#primaty_upload" class="current">Upload <b>Main</b> <?php echo $this->title; ?> Picture</a></li>
+		<li class="nav-two border_small"><a href="#secondary_upload">Upload/Delete <b>Secondary</b> <?php echo $this->title; ?> Pictures</a></li>
+	</ul>
+
+	<div class="list-wrap border_small">
+		<ul id="primaty_upload">
+			<li>
+				<div class="profile_content border_small">
+					<div class="settings_title">Upload <b>Main</b> <?php echo $this->title; ?> Picture</div>
+					<i>*To change the main picture just upload a new one.</i>
+					<?php echo $this->form; ?>
+					<div style="clear:both"></div>
+				</div>
+
+				<div class="profile_content border_small">
+					<div class="settings_title">Crop <b>Main</b> Picture</div>
+                    <p><i>*Use the croping feature to optimize your <b>main</b> picture</i>. Select and drag to crop</p>
+					<img src="<?php echo $this->imagepath.'?'.time(); ?>" class="crop_thumb" height="100" />
+					<a href="#crop" id="crop_images" class="gbutton gbig">Crop Picture</a>
+					<div style="clear:both"></div>
+				</div>
+				<br>
+				<div class="fade_me">
+					<div id="crop">
+						<div class="profile_content border_small" >
+							<div class="settings_title">Crop <b>Main</b> Picture</div>
+							<br>
+							<div id="data">
+								<div class="primary_image"><img src="<?php echo $this->imagepath.'?'.time(); ?>"  id="cropbox" alt="Primary Picture"/></div>
+								<div style="width:200px;height:300px;overflow:hidden;">
+									<img src="<?php echo $this->imagepath.'?'.time(); ?>" id="preview" alt="Preview" />
+								</div>
+
+								<form action="" method="post" onsubmit="return checkCoords();">
+									<input type="hidden" id="filename" name="filename" value="<?php echo $this->imagepath; ?>"/>
+									<input type="hidden" id="x" name="x" />
+									<input type="hidden" id="y" name="y" />
+									<input type="hidden" id="w" name="w" />
+									<input type="hidden" id="h" name="h" />
+									<input type="submit" value="Crop Picture" name="<?php echo $this->crop;?>"/>
+								</form>
+							</div>
+							<div style="clear:both"></div>
+						</div>
+					</div>
+				</div>
+				<div style="clear:both"></div>
+			</li>
+		</ul>
+
+		<ul id="secondary_upload" class="hide">
+			<li>
+				<div class="profile_content border_small">
+					<div class="upload_secondary_pictures">
+						<div class="settings_title">Create/Delete Gallery for <b>secondary</b> pictures</div>
+
+						<?php if($this->gallery != null){ ?>
+						<?php if($this->add_result == true) { echo '<div style="color:red;">Gallery added successfuly.</div>'; } ?>
+						<div class="edit_gallery">
+							<form action="" method="post">
+								<?php foreach($this->gallery as $key => $vals){ ?>
+								<div class="image_galleries">
+									<input type="checkbox" name="gallery_id<?php echo $key; ?>" value="<?php echo $vals->getGalleryId(); ?>">
+									<a target="_blank" style="display: inline;" href="/profile/acting/gallery/id/<?php echo USERID; ?>/group/<?php echo $vals->getGalleryId(); ?>"><?php echo $vals->getGalleryName(); ?></a>
+								</div>
+								<?php } ?>
+								<br>
+								<input type="submit" value="Delete Gallery" name="delete_gallery"/>
+								<br>
+								<p class="pic_info">NOTE: If the deleted category had any pictures inside, they will be moved to the default category.</p>
+							</form>
+						</div>
+						<?php } ?>
+
+						<?php echo $this->addgallery; ?>
+					</div>
+					<div style="clear:both"></div>
+				</div>
+
+				<div class="profile_content border_small">
+					<div class="upload_secondary_pictures">
+						<div class="settings_title">Upload <b>Seconday</b> <?php echo $this->title; ?> Pictures into gallery</div>
+						<?php echo $this->formImageSecond; ?>
+					</div>
+					<div style="clear:both"></div>
+				</div>
+
+				<div class="profile_content border_small">
+					<div class="delete_secondary_pictures">
+						<div class="settings_title">Delete <b>Seconday</b> <?php echo $this->title; ?> Pictures</div>
+						<?php echo $this->deleteimage; ?>
+					</div>
+					<div style="clear:both"></div>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+</div>

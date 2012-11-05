@@ -1,0 +1,48 @@
+<div class="profile_content border_small">
+
+	<h1>
+		<a href="/profile/social/social-info/id/<?php echo $this->talentname['talentnum']; ?>"><?php echo $this->talentname['fname'].' '.$this->talentname['lname']?></a>
+	</h1>
+
+    <div class="my_name">Social Profile</div>
+    <div style="clear:both"></div>
+    <div class="main_detaild">
+        <div class="settings_title">Upload Audio</div>
+        <?php echo $this->audioupload; ?>
+    </div>
+    <div style="clear:both"></div>
+
+    <?php echo Media_Model_MediaAbstract::videoPlayer('jp_container_audio_edit', 'audio_jPlayer_audio_edit', 'edit_acting_audio') ?>
+    <?php if($this->audio){ ?>
+        <script type="text/javascript">
+        var playlist =
+            [
+        <?php foreach($this->audio as $val){?>
+                {
+                    edit:  <?php echo json_encode('
+                            <a href="/media/remove/audio/social/'.USERID.'/'.$val->getSongId().'" class="gbutton gright delete_media">Delete</a>
+                    ');?>,
+                    title:  <?php echo json_encode($val->getTitle());?>,
+                    artist: <?php echo json_encode($val->getDes());?>,
+                    mp3: "<?php echo $val->getTalentnum()->folder.$val->getSongId();?>.mp3"
+                },
+        <?php } ?>
+            ];
+        </script>
+    <?php } ?>
+     <script type="text/javascript">
+    $(document).ready(function(){
+
+        new jPlayerPlaylist({
+            jPlayer: "#audio_jPlayer_audio_edit",
+            cssSelectorAncestor: "#jp_container_audio_edit"
+        }, playlist,
+        {
+            swfPath: "/js/jPlayer/",
+            supplied: "mp3",
+            wmode: "window"
+        });
+    });
+    </script>
+
+</div>

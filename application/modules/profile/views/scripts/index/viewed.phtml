@@ -1,0 +1,17 @@
+<h1>Profiles I Viewed</h1>
+<br>
+<?php if($this->data){?>
+<?php foreach($this->data as $val){?>
+<div class="viewed_content border_small">
+    <div class="close_icon remove_profiles" id="<?php echo $val->getId(); ?>"></div>
+    <a class="viewed_image" href="/profile/social/social-info/id/<?php echo $val->getViewed(); ?>" original-title="<?php echo $val->_name['fname'].' '.$val->_name['lname']; ?>">
+        <img src="<?php echo $val->getImage(); ?>" width="70" height="105"/>
+    </a>
+    <div style="clear:both"></div>
+</div>
+<?php } } else { ?>
+<div class="border_small">
+    <p> Bump! </p>
+    <div style="clear:both"></div>
+</div>
+<?php }?>

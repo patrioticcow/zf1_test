@@ -1,0 +1,76 @@
+<?php
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('ExploreTalent.com');
+$this->headLink()->appendStylesheet(CDN_JS_CSS.'/css/global/site.css');
+$this->headLink()->appendStylesheet(CDN_JS_CSS.'/css/global/main_menu.css')
+                 ->appendStylesheet(CDN_JS_CSS.'/css/global/top_menu.css');
+
+$this->doctype();
+?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta name="robots" content="NOINDEX, NOFOLLOW" />
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<script type="text/javascript" src="/jquery.effects.core.js"></script>
+<script type="text/javascript" src="/jquery.effects.slide.js"></script>
+
+<?php
+echo $this->headMeta();
+echo $this->headTitle();
+echo $this->headLink();
+echo $this->headScript()->appendFile(CDN_JS_CSS.'/js/global/global.js');
+?>
+<!--[if gte IE 9]>
+  <style type="text/css"> .gradient { filter: none; } </style>
+<![endif]-->
+</head>
+
+<body>
+
+<div id="header_container" class="header_container">
+  <?php
+  echo $this->render('header.phtml');
+  ?>
+</div>
+
+  <?php
+  if(LOGGEDIN === TRUE)
+    {
+  	echo '<div class="top_menu_container">';
+
+  	  echo '<div class="user_name">LOGGED IN AS: '.USERNAME.'</div>';
+  	  echo '<div class="user_type">'.ROLE.' MENU'.'</div>';
+
+      echo '<div id="top_menu" class="top_menu">'
+           .$this->navigation()->menu()->renderMenu(Application_Menu_Factory::getSubMenu(ROLE)).
+           '</div>';
+    echo '</div>';
+    }
+  ?>
+
+
+<div id="container" class="container">
+
+  <div id="main_container" class="main_container no-left-main">
+    <?php echo $this->layout()->content; ?>
+  </div>
+
+  <div id="right_container" class="right_container">
+    <?php echo $this->render('right.phtml'); ?>
+  </div>
+
+</div>
+
+<br clear="all">
+
+<div id="footer_container" class="footer_container">
+  <?php echo $this->render('footer.phtml') ?>
+</div>
+<!--div class="Zend_Db_Profiler"><?php //echo $this->footer_content;?></div -->
+
+</body>
+</html>

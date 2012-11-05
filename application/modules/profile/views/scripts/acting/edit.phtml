@@ -1,0 +1,117 @@
+<?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'static','a'=>'act','b'=>'','c'=>'','d'=>'','e'=>'','id'=>$this->userid,'type'=>$this->action_name)); ?>
+<br><br>
+
+<h1>Edit Acting & Modeling Profile</h1>
+
+<?php $form = $this->editacting; ?>
+
+<div id="edit_pictures">
+    <ul class="nav">
+        <li class="nav-one border_small"><a href="#primary_info" class="current">Add/Edit Talent Info</a></li>
+        <li class="nav-two border_small"><a href="#secondary_info">Add/Edit Resume &amp; About Me</a></li>
+    </ul>
+
+    <div class="list-wrap border_small">
+        <ul id="primary_info">
+             <li>
+                 <div class="profile_content">
+                     <div class="main_detaild">
+                         <div class="settings_title">Change Talent Info</div>
+                         <form id="edit_acting_profile" action="<?php echo $form->getAction() ?>" method="<?php echo $form->getMethod() ?>">
+                             <table>
+                                 <tr>
+                                     <td><?php echo $form->city->renderLabel(); ?></td>
+                                     <td><?php echo $form->city->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->height->renderLabel(); ?></td>
+                                     <td><?php echo $form->height->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->weight->renderLabel(); ?></td>
+                                     <td><?php echo $form->weight->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->bust->renderLabel(); ?></td>
+                                     <td><?php echo $form->bust->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->shirt->renderLabel(); ?></td>
+                                     <td><?php echo $form->shirt->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->waist->renderLabel(); ?></td>
+                                     <td><?php echo $form->waist->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->hips->renderLabel(); ?></td>
+                                     <td><?php echo $form->hips->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->sex->renderLabel(); ?></td>
+                                     <td><?php echo $form->sex->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->build->renderLabel(); ?></td>
+                                     <td><?php echo $form->build->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->dobmm->renderLabel(); ?></td>
+                                     <td><?php echo $form->dobmm->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+
+                                     <td><?php echo $form->dobdd->renderLabel(); ?></td>
+                                     <td><?php echo $form->dobdd->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->dobyyyy->renderLabel(); ?></td>
+                                     <td><?php echo $form->dobyyyy->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->hair->renderLabel(); ?></td>
+                                     <td><?php echo $form->hair->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->hairstyle->renderLabel(); ?></td>
+                                     <td><?php echo $form->hairstyle->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->eyes->renderLabel(); ?></td>
+                                     <td><?php echo $form->eyes->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->dress->renderLabel(); ?></td>
+                                     <td><?php echo $form->dress->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+
+                                     <td><?php echo $form->size->renderLabel(); ?></td>
+                                     <td><?php echo $form->size->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->shoe->renderLabel(); ?></td>
+                                     <td><?php echo $form->shoe->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->ethnicity->renderLabel(); ?></td>
+                                     <td><?php echo $form->ethnicity->renderViewHelper(); ?></td>
+                                     <td></td>
+                                     <td></td>
+                                 </tr>
+                                 <tr>
+                                     <td><input type="submit" name="edit_acting_profile" id="edit_acting_profile" value="Submit" class="but_blue"></td>
+                                     <td></td>
+                                     <td></td>
+                                     <td></td>
+                                 </tr>
+                             </table>
+                         </form>
+                     </div>
+                     <div style="clear:both"></div>
+                 </div>
+             </li>
+        </ul>
+        <ul id="secondary_info" class="hide">
+            <li>
+                <div class="profile_content">
+                    <div class="edit_about">
+                        <div class="settings_title">Edit Short Resume</div>
+                        <?php echo $this->editresume; ?>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+                <br>
+                <div class="profile_content">
+                    <div class="edit_resume">
+                        <div class="settings_title">Edit About Me</div>
+                        <?php echo $this->editabout; ?>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

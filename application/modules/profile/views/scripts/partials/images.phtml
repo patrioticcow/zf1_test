@@ -1,0 +1,27 @@
+<?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'static','a'=>'','b'=>'act','c'=>'','d'=>'','e'=>'','id'=>$this->userid,'type'=>$this->action_name)); ?>
+
+<div class="tabcontent">
+    <?php if($this->allimages != null){ ?>
+    <?php foreach($this->allimages as $key=>$val){ ?>
+        <div class="border_small image_gallery">
+            <div class="gallesy_name">
+                <a href="<?php echo '/profile/'.$this->action.'/gallery/id/'.$val[0]->talentnum.'/group/'.$val[0]->gallery;?>">
+                    <?php echo $key;?>
+                </a>
+                <br><br><br><br><br><br>
+                <p><?php echo count($val); ?> Pictures</p>
+            </div>
+            <div class="image_gallery_images">
+                <?php foreach($val as $value){?>
+                <a class="gallery_image" href="<?php echo '/profile/'.$this->action.'/gallery/id/'.$value->talentnum.'/group/'.$value->gallery;?>">
+                    <img class="lazy" data-original="<?php echo $value->path;?>" src="<?php echo CDN_JS_CSS; ?>/graphics/icons/grey1.gif" width="122" alt="acting modeling dance musician images"/>
+                    <noscript><img src="<?php echo $val->path;?>" width="122"></noscript>
+                </a>
+                <?php } ?>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    <?php } } ?>
+    <div style="clear:both"></div>
+</div>
+<div style="clear:both"></div>

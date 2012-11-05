@@ -1,0 +1,91 @@
+<?php
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('ExploreTalent.com');
+
+$this->render('default_css_js.phtml');
+
+$this->doctype();
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta name="robots" content="NOINDEX, NOFOLLOW" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<?php
+	echo $this->headMeta();
+	echo $this->headTitle();
+	echo $this->headLink();
+	?>
+
+    <!--[if lt IE 9]> <script type="text/javascript" src="<?php echo CDN_JS_CSS; ?>/js/html5.js"></script><![endif]-->
+    <!--[if gte IE 9]><style type="text/css">.gradient { filter: none; }</style><![endif]-->
+    <!--[if lt IE 8]><link rel="stylesheet" type="text/css" href="/css/global/ie7_and_down.css" /><![endif]-->
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+	<!-- for some reason this doesn't work properly in a file-->
+	 <script type="text/javascript">
+	    $(document).ready(function () {
+	    var label_cell = $('#join_cell-label, #join_provider-label, #join_acting-label, #join_modeling-label, #join_dance-label, #join_music-label, #join_crew-label');
+	    var checkbox_cell = $('#join_cell-element, #join_provider-element, #join_acting-element, #join_modeling-element, #join_dance-element, #join_music-element, #join_crew-element');
+
+	    label_cell.hide();
+	    checkbox_cell.hide();
+
+	    $('#join_box').change(function () {
+
+	        if (this.checked) {
+	            label_cell.show();
+	            checkbox_cell.show();
+	        } else {
+	            label_cell.hide();
+	            checkbox_cell.hide();
+	        }
+	    });
+	});
+	</script>
+
+</head>
+
+<body>
+	<div class="welcome_to_et">
+	   <p><span> Welcome to the new ExploreTalent.com!! </span> During this trial launch of our new design - your feedback is very important to us!  </p>
+	    <p>Please send your comments, suggestions and bugs to us using the <a href="/bugs" style="display: inline;">Report A Bug</a> link on the left hand side of the site!</p>
+	</div>
+
+    <div class="top_menu_hidden" style="display: none;"><?php echo $this->render('hiddenmenu.phtml'); ?> </div>
+    <div class="header_top_border"></div>
+    <div class="header_top_under_border"></div>
+
+	<div id="header_container_default" class="header_container">
+	    <?php echo $this->render('header.phtml'); ?>
+	</div>
+
+	<a href="/bugs" class="bug_report" target="_blank"></a>
+
+	<div id="container" class="container">
+
+		<div id="main_container" class="main_container no-left-main">
+	    	<?php echo $this->layout()->content; ?>
+	  	</div>
+
+	  	<div id="right_container" class="right_container">
+	    	<?php echo $this->render('right_default.phtml'); ?>
+	  	</div>
+
+	</div>
+
+	<div style="clear:both"></div>
+
+	<div id="footer_container" class="footer_container">
+	  <?php echo $this->render('footer.phtml') ?>
+	</div>
+
+	<script type="text/javascript" src="<?php echo CDN_JS_CSS; ?>/js/lazyload.js"></script> <!-- leave this here -->
+
+	<!--div class="Zend_Db_Profiler"><?php //echo $this->footer_content;?></div-->
+
+	<?php echo $this->headScript();?>
+</body>
+</html>

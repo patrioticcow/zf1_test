@@ -1,0 +1,150 @@
+<div class="social_right">
+	<?php echo $this->partial('partials/pagename.phtml', array( 'info' => $this->info, 'auth'=>$this->auth)); ?>
+
+    <div class="list_carousel border_tiny">
+        <ul id="foo0"><div class="loading_ajax"><img src="<?php echo CDN_JS_CSS; ?>/graphics/loading.gif" alt="Loading"/>Loading...</div></ul>
+        <div style="clear:both;"></div>
+    </div>
+
+
+    <?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'social','a'=>'','b'=>'act','c'=>'','d'=>'','e'=>'','id'=>$this->notme,'type'=>'social')); ?>
+
+    <div style="clear: both"></div>
+	<?php if(LOGGEDIN){
+		if($this->notme == USERID){ echo "<h3>What is on your mind?</h3>"; } else { echo "<h3>Write me something</h3>";}
+	    echo $this->messageform; ?>
+
+    <div style="clear: both;"></div>
+	<div class="contest_snug">
+		<a id="wall_image_box" href="#wall_image_content"><div class="wall_image"></div></a>
+		<a id="wall_youtube_box" href="#wall_houtube_content"><div class="wall_youtube"></div></a>
+		<a id="wall_vimeo_box" href="#wall_vimeo_content"><div class="wall_vimeo"></div></a>
+    </div>
+
+	<div style="display:none">
+		<div id="wall_image_content">
+			<h3>Paste Image Link below</h3>
+			<div><input class="add_img_url"></div>
+            <br>
+            <p style="color: #bbbbbb;">
+                <span style="color: #000;">Example:</span><span style="color: #ff4500;">http://www.test.com/image.jpeg</span>
+            </p>
+			<br>
+			<div><a href="#" id="wall_add_image" class="gbutton gbig">Add Image</a></div>
+			<div class="show_wall_pic"></div>
+		</div>
+	</div>
+	<div style="display:none">
+		<div id="wall_houtube_content">
+			<h3>Paste Youtube ID below </h3>
+			<div><input type="text" class="add_yotube_url" value=""></div>
+            <br>
+            <p style="color: #bbbbbb;">
+                <span style="color: #000;">Example:</span> http://www.youtube.com/watch?v=
+                    <span style="color: #ff4500;">7fzX8X4n99E</span>
+                    &feature=plcp
+            </p>
+			<br>
+			<div><a href="#" id="wall_add_yotube" class="gbutton gbig">Add Youtube</a></div>
+		</div>
+	</div>
+	<div style="display:none">
+		<div id="wall_vimeo_content">
+			<h3>Paste Vimeo ID below</h3>
+			<div><input type="text" class="add_vimeo_url" value=""></div>
+            <br>
+            <p style="color: #bbbbbb;">
+                <span style="color: #000;">Example:</span> http://vimeo.com/<span style="color: #ff4500;">50512824</span>
+            </p>
+			<br>
+			<div><a href="#" id="wall_add_vimeo" class="gbutton gbig">Add Vimeo</a></div>
+		</div>
+	</div>
+
+	<div class="loading"></div>
+	<div class="character_count"></div>
+	<?php } else { echo "<br>"; }?>
+
+	<div class="sort_by">
+	    <span class="sort_by_name">sort by:</span>
+	    <!--
+	    <span class="sort_by_newest">Everyone</span>
+	    <?php //if(LOGGEDIN){ ?>
+	    <span class="sort_by_friends">My Activities</span>
+	    <?php //} ?>
+	    -->
+	    <form class="sort_by_select" name="sortby_category" action="" method="post">
+	        <select id="sort_by_category" name="sort_by_category" onchange="myWall.changeSelect($(this).val());">
+                <option label="All" value="1">All</option>
+                <option label="Acting & Modeling" value="2">Acting &amp; Modeling</option>
+                <!--option label="Modeling" value="3">Modeling</option-->
+                <option label="Musician" value="4">Musician</option>
+                <option label="Dance" value="5">Dance</option>
+            </select>
+	    </form>
+	    <div style="clear: both;"></div>
+	</div>
+
+	<div class="wallmessages" id="index">
+		<ul class="wall_message">
+			<li class="loading_msg">Loading ...</li>
+			<script id="wallcontent" type="text/x-handlebars-template">
+			{{#each this}}
+			<li class="msgid" id="{{msg_id}}">
+
+				<div class="wall_msg">
+					<div class="append_message">
+					    {{{x}}}
+					    <div class="border_small main_msg_holder">
+						    <div class="wall_img"><a href="/profile/social/social-info/id/{{talentnum}}"><img src="{{thumb}}" width="70"/></a></div>
+							<p> {{{message}}} </p>
+							<div style="clear: both;"></div>
+							<span> {{created}} </span>
+                            <?php if(LOGGEDIN){ ?>
+                                 <a href="" class="gbutton gsmall commentopen" id="{{msg_id}}" title="Comment">comment</a>
+                            <?php } ?>
+                            <span>{{type}} Profile</span>
+						</div>
+						<div style="clear: both;"></div>
+						{{#if comment}}
+						{{#each comment}}
+						<div class="comments border_small" id="{{com_id}}">
+						    {{{xx}}}
+							<div class="wall_img"><a href="/profile/social/social-info/id/{{talentnum}}"><img src="{{thumb}}" width="50"/></a></div>
+							<div class="commentsp"> {{{comment}}} </div>
+							<span> {{created}} </span>
+							<div style="clear: both;"></div>
+						</div>
+						{{/each}}
+						{{/if}}
+
+						<div class="commentupdate" style='display:none' id='commentbox{{msg_id}}'>
+							<div class="stcommentimg"><img src="<?php echo $this->commentimage; ?>" width="50"/></div>
+							<div class="stcommenttext" ><?php echo $this->commentform; ?></div>
+						</div>
+					</div>
+				</div>
+				<div style="clear:both;"></div>
+			</li>
+			{{/each}}
+			</script>
+
+			<script id="wallcomment" type="text/x-handlebars-template">
+			{{#each this}}
+                <div class="comments border_small" id="{{com_id}}">
+                    {{{xxx}}}
+                    <div class="wall_img"><a href="/profile/social/social-info/id/{{talentnum}}"><img src="{{thumb}}" width="50"/></a></div>
+                    <div class="commentsp">{{{comment}}}</div>
+                    <span>{{created}}</span>
+                </div>
+            {{/each}}
+            </script>
+		</ul>
+		<div style="clear:both"></div>
+	</div>
+	<div class="loadingmore"></div>
+</div>
+
+
+<div class="<?php echo $this->notme; ?>" id="talentnum_onpage" ></div>
+<div class="<?php echo $this->notme; ?>" id="general_talentnum" ></div>

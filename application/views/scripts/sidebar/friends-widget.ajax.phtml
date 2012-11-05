@@ -1,0 +1,21 @@
+<div class="border_small">
+    <div class="module_title dblue dblue-bar">
+        <span><?php echo $this->name; ?> Friends</span>
+        <a href="/friends/index/view/id/<?php echo $this->id;?>" class="view_all_friends">view all</a>
+    </div>
+    <ul class="accept_friends">
+        <?php if (count($this->friends) >= 1) {?>
+        <?php foreach($this->friends as $val){
+            $name = Application_Model_Functions::getName($val->getTalentnum()->talentnum);
+            if($this->loggedinuser != $val->getTalentnum()->talentnum) { ?>
+                <li class="left_friends">
+                    <a href="/profile/social/social-info/id/<?php echo $val->getTalentnum()->talentnum; ?>"
+                       original-title="<?php echo $val->getTalentnum()->fname.' '.$val->getTalentnum()->lname; ?> <?php if ($val->getTalentnum()->online == 'online'){?> -- online -- <?php }?>">
+                        <img src="<?php echo $val->getTalentnum()->thumb; ?>" width="40" height="60" alt="Primary User Image"/>
+                    </a>
+                </li>
+                <?php } }?>
+        <?php } else { echo "<li>No friends</li>"; }?>
+    </ul>
+    <div style="clear: both;"></div>
+</div>

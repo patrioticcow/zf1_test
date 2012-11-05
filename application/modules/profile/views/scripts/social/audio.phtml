@@ -1,0 +1,46 @@
+<div class="social_right">
+	    <?php echo $this->partial('partials/pagename.phtml', array( 'info' => $this->talentname, 'auth'=>$this->auth)); ?>
+
+        <div class="my_name">All My Audio Files</div>
+        <br>
+      	<?php if ($this->socialaudio){?>
+			<div>
+			<?php echo Media_Model_MediaAbstract::videoPlayer('jp_container_audio_social', 'audio_jPlayer_audio_social', 'edit_social_audio') ?>
+			 <script type="text/javascript">
+        		var socialplaylist =
+					[
+						<?php $xsocial=0; foreach($this->socialaudio as $val){?>
+                    	{
+                       		edit: '',
+                          	title:  <?php echo json_encode($val->getTitle());?>,
+                           	artist: <?php echo json_encode($val->getDes());?>,
+                           	mp3:"<?php echo $val->getTalentnum()->folder.$val->getSongId();?>.mp3",
+                       	},
+                      	<?php $xsocial++; }?>
+                	];
+             	var xsocial = <?php echo $xsocial; ?>;
+         	</script>
+          	 <script type="text/javascript">
+            	$(document).ready(function(){
+               		new jPlayerPlaylist({
+                       		jPlayer: "#audio_jPlayer_audio_social",
+                         	cssSelectorAncestor: "#jp_container_audio_social"
+                   		}, socialplaylist,
+                      	{
+                           	swfPath: "/js/jPlayer/",
+                          	supplied: "mp3",
+                          	 wmode: "window",
+                   	});
+
+                  	var ysocial = 75 + 35 * xsocial;
+                 	$(".ac-container").prepend(
+                       	"<style>" +
+						".ac-container input:checked ~ article.social_smalla{" +
+						"height: "+ ysocial +"px" +
+                   		" } </style>"
+                   	);
+               	});
+           	</script>
+			</div>
+		<?php } ?>
+    </div>

@@ -1,0 +1,55 @@
+<div class="social_right ">
+		<?php echo $this->partial('partials/pagename.phtml', array( 'info' => $this->talentname, 'auth'=>$this->auth)); ?>
+
+        <div class="my_name">All My Videos Files</div>
+
+        <div class="ac-container all_videos">
+                <?php if ($this->socialvideos){?>
+                <div>
+                    <div class="social_small_videos">
+                        <?php echo Media_Model_MediaAbstract::videoPlayer('video_jPlayer_video_social', 'jp_container_video_social', 'edit_social_videos') ?>
+                         <script type="text/javascript">
+                        var playlistsocial =
+                            [
+                        <?php $xsocial=0; foreach($this->socialvideos as $val){?>
+                                {
+                                    edit: '',
+                                    title:  <?php echo json_encode($val->getTitle());?>,
+                                    artist: <?php echo json_encode($val->getDes());?>,
+                                    poster: "<?php echo $val->getTalentnum()->folder.$val->getVideoId();?>.jpg",
+                                    thumb:  "<?php echo $val->getTalentnum()->folder.$val->getVideoId();?>.jpg",
+                                    flv:    "<?php echo $val->getTalentnum()->folder.$val->getVideoId();?>.flv",
+                                },
+                        <?php $xsocial++; }?>
+                            ];
+
+                         var xsocial = <?php echo $xsocial; ?>;
+                        </script>
+
+
+                         <script type="text/javascript">
+                        $(document).ready(function(){
+
+                           new jPlayerPlaylist({
+
+                                jPlayer: "#jp_container_video_social",
+                                cssSelectorAncestor: "#video_jPlayer_video_social"
+                            }, playlistsocial,
+                            {
+                                swfPath: "/js/jPlayer/",
+                                supplied: "flv",
+                                size: {
+                                    width: "590px",
+                                    cssClass: "jp-video-video_edit"
+                                }
+                            });
+
+                        });
+                        </script>
+                    </div>
+                </div>
+                <?php } ?>
+
+            </div>
+     </div>
+<?php echo '<pre>'; print_r( $this->modelingvideos ); ?>

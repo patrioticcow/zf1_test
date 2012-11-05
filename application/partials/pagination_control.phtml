@@ -1,0 +1,57 @@
+<?php if ($this->pageCount): ?>
+	
+<?php 
+$p = new Application_Model_Paginator();
+?>
+    <div >
+        <div >
+            Showing <strong><?php echo Zend_Locale_Format::toNumber($this->firstItemNumber)?> - <?php echo Zend_Locale_Format::toNumber($this->lastItemNumber)?></strong> of <strong><?php echo Zend_Locale_Format::toNumber($this->totalItemCount)?></strong>
+        </div>
+        <div class="pag_numbers">
+			<ul class="pag_numbers_ul">
+                <!-- Previous page link -->
+                <?php if (isset($this->previous)): ?>
+                <li class="pag_numbers_li">
+                	<?php echo $p->button($this->previous, 'Prev'); ?>
+                </li>
+                <?php endif; ?>
+
+                <?php //Now put the first page link
+                if($this->current > 1 && $this->firstPageInRange > 1){ ?>
+                <li class="pag_numbers_li">
+                	<?php echo $p->button(1, '1'); ?>
+                </li>
+                <?php } ?>
+                <!-- Numbered page links -->
+                <?php foreach ($this->pagesInRange as $page): ?>
+                  <?php if ($page != $this->current): ?>
+                  	<li class="pag_numbers_li">
+                        <?php echo $p->button($page, Zend_Locale_Format::toNumber($page)); ?>
+                    </li>
+                  <?php else: ?>
+                  	<li class="pag_numbers_li">
+                    <span class="page-mover-numeric pave-mover page-mover-current">
+                    	<?php echo Zend_Locale_Format::toNumber($page); ?>
+                    </span>
+                    </li>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+
+                <?php //Now put the last page link
+                if($this->current != $this->last && $this->last > $this->lastPageInRange){ ?>
+                <li class="pag_numbers_li">
+                	<?php echo $p->button($this->last, Zend_Locale_Format::toNumber($this->last)); ?>
+                </li>
+                <?php } ?>
+ 
+                <!-- Next page link -->
+                <?php if (isset($this->next)): ?>
+                <li class="pag_numbers_li">
+                	<?php echo $p->button($this->next, 'Next'); ?>
+                </li>
+                <?php endif; ?>
+        		
+        	</ul>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,55 @@
+RewriteEngine On
+
+AddType text/css .css
+AddType text/javascript .js
+
+
+RewriteRule ^sd/(.*).html$ /content/$1 [R=301,NC,L]
+RewriteRule ^join$ /join/flash [R=301,NC,L]
+RewriteRule ^flash/join$ /join/flash [R=301,NC,L]
+
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+#added here so the file existince rule above takes precedence
+#RewriteRule ^(.*).html$ /content/$1 [R=301,L]
+RewriteRule ^.*$ index.php [NC,L]
+
+AddType text/css .css
+AddType text/javascript .js
+
+# mod_alias
+Redirect 301 /search2.php /talents/index/models
+Redirect 301 /search_musicians.php /talents/index/musicians
+Redirect 301 /search_featured.php /talents/index/featured
+Redirect 301 /contests/urban-music-contest-1 /talents/index/models
+Redirect 301 /video-search.php /media/video/search
+Redirect 301 /contests.php /contests
+Redirect 301 /videos/talent-auditions.php /media/video/testimonials
+Redirect 301 /celebrities-exclusive-interviews.php /industry/celebrities-exclusive-interviews
+Redirect 301 /video_index.php /testimonials
+Redirect 301 /hiphop-exclusive-interviews.php /media/hiphop-interviews
+Redirect 301 /acting-videos.php /media/video/acting
+Redirect 301 /celebrity_videos.php /media/video/urban
+Redirect 301 /join_cd.php /cduser/join
+Redirect 301 /resources.php /resources
+Redirect 301 /about_us.php /about
+Redirect 301 /testimonials.php /testimonials
+Redirect 301 /industry.php /industry
+Redirect 301 /join_aff.php /affiliates
+Redirect 301 /rate_talent.php /join/flash
+Redirect 301 /games.php /join/flash
+Redirect 301 /faq.php /about/faq
+Redirect 301 /login_page_talent.php /join/flash
+Redirect 301 /suggestions.php /testimonials/awards
+Redirect 301 /help.php /about/help
+Redirect 301 /password_help1.php /about/help
+Redirect 301 /help_email.php /about/help
+Redirect 301 /upload_pic_instructions.php /about/help
+Redirect 301 /search/any /talents
+Redirect 301 /articles_alphabetical.php /articles
+Redirect 301 /modeling_agencies.php /content/modeling-agencies
+Redirect 301 /articles/modeling/reality-tv-castings /articles/tvshows/reality-show-auditions
+Redirect 301 /modeling-jobs.php /articles/modeling/modeling-jobs
+# mod_rewrite

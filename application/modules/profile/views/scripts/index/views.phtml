@@ -1,0 +1,10 @@
+<h1>Viewed my profile</h1>
+<br>
+<?php foreach($this->data as $val){?>
+<div class="viewed_content border_small">
+    <a class="viewed_image" href="/profile/social/social-info/id/<?php echo $val->getViewer(); ?>"  original-title="<?php echo $val->_name['fname'].' '.$val->_name['lname']; ?>">
+        <img src="<?php echo $val->getImage(); ?>" width="70" height="105"/>
+    </a>
+    <div style="clear:both"></div>
+</div>
+<?php } ?>

@@ -1,0 +1,23 @@
+<h1><?php echo $this->title; ?></h1>
+
+<div class="border_small">
+
+    <div class="forms_container">
+    <?php echo $this->form; ?>
+    </div>
+
+    <div class="object_container">
+    <?php if($this->object != null): ?>
+        <?php var_dump($this->object); ?>
+    <?php endif; ?>
+    </div>
+
+    <?php echo $this->bootstrap; ?>
+
+    <?php
+    if(isset($this->proxy))
+        var_dump($this->proxy);
+    ?>
+    <div style="clear: both;"></div>
+</div>
+

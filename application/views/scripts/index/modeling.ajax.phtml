@@ -1,0 +1,31 @@
+<table class="job-table">
+    <tr>
+        <td class="job-title-name c2">Title</td>
+        <td class="job-title-loc c2">Location</td>
+        <td class="job-title-type c2">Type</td>
+        <td class="job-title-type c2">Submit By</td>
+    </tr>
+    <?php $i = 0; foreach ($this->modeling as $row) { ?>
+    <?php $class = $i % 2 == 0 ? 'first_row' : 'second_row'; ?>
+    <tr class="<?php echo $class;?>">
+        <td class="list-2">
+            <a href="<?php echo $this->url(
+                array(
+                    'category' => Application_Model_Seo::normalizeKeywords($row->getCat()->value,'-'),
+                    'title' => Application_Model_Seo::normalizeKeywords($row->getName(),'-'),
+                    'location' => Application_Model_Seo::normalizeKeywords($row->getLocation(),'-'),
+                    'location_id' => Application_Model_Seo::normalizeKeywords($row->getZip(),'-'),
+                    'casting_id' => Application_Model_Seo::normalizeKeywords($row->getCastingId(),'-')
+                ),'audition_detail'
+            );?>" ><?php echo $row->getName(); ?></a>
+        </td>
+        <td><span class="job-list-span2"><?php echo $row->getLocation (); ?></span></td>
+        <td><span class="job-list-span3"><?php echo $row->getProjectType (); ?></span></td>
+        <td><span class="job-list-span3"><?php echo $row->getAsap(); ?></span></td>
+    </tr>
+    <?php $i++;
+}?>
+</table>
+<a href="<?php echo $this->url(array(),'modeling_route');?>">
+    <div class="more_auditions"></div>
+</a>

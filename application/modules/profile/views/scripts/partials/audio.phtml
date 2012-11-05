@@ -1,0 +1,47 @@
+<?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'static','a'=>'','b'=>'','c'=>'act','d'=>'','e'=>'','id'=>$this->userid,'type'=>$this->action_name)); ?>
+<br><br>
+<?php if($this->audio){?>
+
+<div class="tabcontent">
+    <?php echo Media_Model_MediaAbstract::videoPlayer('jp_container_audio', 'audio_jPlayer_audio', 'edit_acting_audio') ?>
+
+         <script type="text/javascript">
+        playlist =
+        [
+        <?php foreach($this->audio as $val){?>
+            {
+                edit: '',
+                title:  <?php echo json_encode($val->getTitle());?>,
+                artist: <?php echo json_encode($val->getDes());?>,
+                mp3:"<?php echo $val->getTalentnum()->folder.$val->getSongId();?>.mp3",
+            },
+        <?php }?>
+        ];
+
+        </script>
+
+     <script type="text/javascript">
+    $(document).ready(function(){
+        new jPlayerPlaylist({
+            jPlayer: "#audio_jPlayer_audio",
+            cssSelectorAncestor: "#jp_container_audio"
+        }, playlist,
+            {
+            swfPath: "/js/jPlayer/",
+            supplied: "mp3",
+            wmode: "window"
+        });
+    });
+    </script>
+    <div style="clear:both"></div>
+</div>
+
+<?php } else { ?>
+<div class="et_notification et_info">
+	<div class="et_text">
+		<p><strong>Info!</strong> No audio. You can upload them <a style="display:inline; color: #4A9BCA; text-decoration: underline;" href="/profile/musician/editaudio/id/<?php echo USERID; ?>">Here</a></p>
+	</div>
+</div>
+<?php } ?>
+
+<div style="clear:both"></div>

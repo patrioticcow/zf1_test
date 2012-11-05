@@ -1,0 +1,45 @@
+<?php
+
+$this->headLink()->headLink( array( 'rel' => 'icon',
+	'href' => CDN_JS_CSS.'/images/favicon.ico',
+	'type' => 'image/x-icon' ));
+
+$this->headLink()->appendStylesheet(CDN_JS_CSS.'/css/global/site.css');
+
+switch (Application_Model_Functions::getUserAgent()) {
+	case 'firefox':
+		$this->headLink()->appendStylesheet(CDN_JS_CSS.'/css/global/site_firefox.css');
+		break;
+	case 'safari':
+		$this->headLink()->appendStylesheet(CDN_JS_CSS.'/css/global/site_safari.css');
+		break;
+	case 'chrome':
+		$this->headLink()->appendStylesheet(CDN_JS_CSS.'/css/global/site_chrome.css');
+		break;
+}
+
+$this->headLink()->appendStylesheet(CDN_JS_CSS.'/css/global/ie.css', 'all', 'IE')
+				->appendStylesheet(CDN_JS_CSS.'/css/jquery.fancybox.css')
+				->appendStylesheet(CDN_JS_CSS.'/css/jPlayer.css')
+				->appendStylesheet(CDN_JS_CSS.'/css/normalize.css')
+				->appendStylesheet(CDN_JS_CSS.'/css/flip.css')
+				->appendStylesheet(CDN_JS_CSS.'/css/tipsy.css')
+				->appendStylesheet(CDN_JS_CSS.'/css/jquery.selectbox.css')
+				->appendStylesheet(CDN_JS_CSS.'/css/jmNotify.css');
+
+$this->headScript()->appendFile(CDN_JS_CSS.'/js/communitybuzz/ajax.js')
+				->appendFile(CDN_JS_CSS.'/jqtransformplugin/jquery.jqtransform.js')
+
+				->appendFile(CDN_JS_CSS.'/js/ui/jquery.effects.core.js')
+				->appendFile(CDN_JS_CSS.'/js/ui/jquery.easing.1.3.js')
+
+				->appendFile(CDN_JS_CSS.'/js/global/global.js')
+				->appendFile(CDN_JS_CSS.'/js/global/activityfeed.js')
+
+				->appendFile(CDN_JS_CSS.'/js/jPlayer/jplayer.playlist.min.js')
+				->appendFile(CDN_JS_CSS.'/js/jPlayer/jquery.jplayer.inspector.js')
+				->appendFile(CDN_JS_CSS.'/js/jPlayer/jquery.jplayer.min.js')
+
+				->appendFile(CDN_JS_CSS.'/js/jquery.cookie.js')
+
+				->appendFile(CDN_JS_CSS.'/js/build190612.js');

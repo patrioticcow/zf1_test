@@ -1,0 +1,54 @@
+<div class="social_right">
+
+        <h1>
+			<a href="/profile/social/social-info/id/<?php echo $this->talentname['talentnum']; ?>"><?php echo $this->talentname['fname'].' '.$this->talentname['lname']?></a>
+		</h1>
+        <div class="my_name">My Activity</div>
+
+        <div class="wallmessages" id="myactivity">
+            <ul class="wall_message">
+                <script id="wallcontent" type="text/x-handlebars-template">
+                {{#each this}}
+                <li class="msgid" id="{{msg_id}}">
+
+                    <div class="wall_msg">
+                        <div class="append_message">
+
+                            <div class="border_small main_msg_holder">
+                                <div class="wall_img"><a href="/profile/social/social-info/id/{{talentnum}}"><img src="{{thumb}}" width="70"/></a></div>
+                                <p> {{{message}}} </p>
+                                <div style="clear: both;"></div>
+                                <span> {{created}} </span>
+                            </div>
+                            <div style="clear: both;"></div>
+
+                            {{#if comment}}
+                            {{#each comment}}
+                            <div class="comments border_small" id="{{com_id}}">
+                                <div class="wall_img"><a href="/profile/social/social-info/id/{{talentnum}}"><img src=" {{thumb}}" width="50"/></a></div>
+                                <span> {{created}} </span>
+                            </div>
+                            {{/each}}
+                            {{/if}}
+
+                    </div>
+                    <div style="clear:both;"></div>
+                    </div>
+                </li>
+                {{/each}}
+                </script>
+
+                <script id="wallcomment" type="text/x-handlebars-template">
+                {{#each this}}
+                    <div class="comments border_small" id="{{com_id}}">
+                        <div class="wall_img"><a href="/profile/social/social-info/id/{{talentnum}}"><img src="{{thumb}}" width="50"/></a></div>
+                        <span>{{created}}</span>
+                    </div>
+                {{/each}}
+                </script>
+            </ul>
+            <div style="clear:both"></div>
+        </div>
+        <div class="loadingmore"></div>
+
+</div>

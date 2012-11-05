@@ -1,0 +1,16 @@
+<div class="home_contests border_tiny">
+    <div class="home_contests_title"><a href="/contests">Contests</a></div>
+    <div class="home_all_contests">
+        <?php foreach ($this->result as $key => $value) { ?>
+        <div class="home_individual_contests">
+            <a href="/contests/<?php echo $value->getTitle ()->url . '_' . $value->getContestId ();?>"
+               title="<?php echo $value->getTitle ()->name; ?>">
+                <img src="<?php echo CDN_IMAGES; ?>/contest_media/<?php echo $value->getThumb (); ?>"
+                     width="120" height="120" alt="Explore Talent Contests"/>
+            </a>
+        </div>
+        <?php } ?>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+<div style="clear:both;"></div>

@@ -1,0 +1,19 @@
+<div class="home_featured border_tiny">
+    <div class="home_featured_title">
+        <a class="feat_left" href="/talents/index/featured">Featured Talents</a>
+        <a class="feat_right" href="/subscription">Get Featured!</a>
+    </div>
+    <div class="home_all_featured">
+        <?php foreach ($this->result as $key => $val) {
+        $img = Media_Model_MediaAbstract::getSocialPic ($val->getTalentnum (), 'media_social', 'md');
+        ?>
+        <div class="home_individual_featured">
+            <a href="/profile/social/social-info/id/<?php echo $val->getTalentnum();?>"
+               title="<?php echo $val->getFname () . ' ' . $val->getLname (); ?>">
+                <img src="<?php echo $img; ?>" width="80" height="120" alt="Featured Talents"/>
+            </a>
+        </div>
+        <?php } ?>
+    </div>
+    <div style="clear:both;"></div>
+</div>

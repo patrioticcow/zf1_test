@@ -1,0 +1,17 @@
+<h1><?php echo $this->title; ?></h1>
+
+<div class="border_small">
+
+    <div class="forms_container">
+    
+        <?php if($this->forms): ?>
+        <?php foreach($this->forms as $form): ?>
+        
+        <?php echo $form; ?>
+        
+        <?php endforeach; ?>
+        <?php endif; ?>
+    
+    </div>
+    <div style="clear: both;"></div>
+</div>

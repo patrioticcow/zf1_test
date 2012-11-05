@@ -1,0 +1,46 @@
+<?php if($this->profile == 'social'){ ?>
+    <div class="profile_top_menu">
+        <ul>
+            <li class="<?php echo $this->a; ?>"><a href="/profile/social/social-info/id/<?php echo $this->id; ?>" title="">Info</a></li>
+            <li class="<?php echo $this->b; ?>"><a href="/profile/social/<?php echo $this->id; ?>" title="">Activities</a></li>
+            <li class="<?php echo $this->c; ?>"><a href="/profile/social/contests/id/<?php echo $this->id; ?>" title="">Contests</a></li>
+            <li class="<?php echo $this->d; ?>"><a href="/friends/index/view/id/<?php echo $this->id; ?>" title="">Friends</a></li>
+        </ul>
+        <div style="clear: both;"></div>
+    </div>
+<?php } else if ($this->profile == 'static'){ ?>
+    <div class="profile_top_menu">
+        <ul>
+            <li class="<?php echo $this->a; ?>">
+                <a href="/profile/<?php echo $this->type; ?>/<?php echo $this->id; ?>" title="">Info</a>
+                <?php if(LOGGEDIN && (USERID == $this->id)){ ?>
+                <a href="/profile/<?php echo $this->type; ?>/edit/id/<?php echo USERID; ?>" title="Edit <?php echo ucfirst($this->type); ?> Info"><span class="edit_profiles"></span></a>
+                <?php } ?>
+            </li>
+            <li class="<?php echo $this->b; ?>">
+                <a href="/profile/<?php echo $this->type; ?>/image/id/<?php echo $this->id; ?>" title="">Pictures</a>
+                <?php if(LOGGEDIN && (USERID == $this->id)){ ?>
+                <a href="/profile/<?php echo $this->type; ?>/editimages/id/<?php echo USERID; ?>" title="Edit <?php echo ucfirst($this->type); ?> Pictures"><span class="edit_profiles"></span></a>
+                <?php } ?>
+            </li>
+            <?php if ($this->type != 'dance'){ ?>
+            <li class="<?php echo $this->c; ?>">
+                <a href="/profile/<?php echo $this->type; ?>/audio/id/<?php echo $this->id; ?>" title="">Audio</a>
+                <?php if(LOGGEDIN && (USERID == $this->id)){ ?>
+                <a href="/profile/<?php echo $this->type; ?>/editaudio/id/<?php echo USERID; ?>" title="Edit <?php echo ucfirst($this->type); ?> Audio"><span class="edit_profiles"></span></a>
+                <?php } ?>
+            </li>
+            <?php } ?>
+            <li class="<?php echo $this->d; ?>">
+                <a href="/profile/<?php echo $this->type; ?>/video/id/<?php echo $this->id; ?>" title="">Video</a>
+                <?php if(LOGGEDIN && (USERID == $this->id)){ ?>
+                <a href="/profile/<?php echo $this->type; ?>/editvideo/id/<?php echo USERID; ?>" title="Edit <?php echo ucfirst($this->type); ?> Videos"><span class="edit_profiles"></span></a>
+                <?php } ?>
+            </li>
+            <li class="<?php echo $this->e; ?>">
+                <a href="/profile/<?php echo $this->type; ?>/similar-talents/id/<?php echo $this->id; ?>" title="">Similar Talents</a>
+            </li>
+        </ul>
+        <div style="clear: both;"></div>
+    </div>
+<?php } ?>

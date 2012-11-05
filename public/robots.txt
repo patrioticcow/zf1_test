@@ -1,0 +1,86 @@
+###############################
+#
+#
+User-agent: *
+#
+# list folders robots are not allowed to index
+#
+#Disallow: /whatever/folder/
+#Disallow: /whatever/else/
+#Disallow: /whatever/assets/
+#Disallow: /folder/
+#
+Disallow: /admin/
+Disallow: /affiliate/
+Disallow: /android/
+Disallow: /beta/
+Disallow: /blackberry/
+Disallow: /bugs/
+Disallow: /clickheat/
+Disallow: /css/
+Disallow: /download/
+Disallow: /et/
+Disallow: /exp/
+Disallow: /ext/
+Disallow: /facebook/
+Disallow: /face_reader/
+Disallow: /flash/
+Disallow: /flashcoms/
+Disallow: /flashjoin/
+Disallow: /flashjoin0/
+Disallow: /functions/
+Disallow: /gigya/
+Disallow: /help/
+Disallow: /iphone/
+Disallow: /join/
+Disallow: /js/
+Disallow: /kids/
+Disallow: /lib/
+Disallow: /links/
+Disallow: /mail/
+Disallow: /messenger7/
+Disallow: /mo/
+Disallow: /mobile/
+Disallow: /mobile.orig/
+Disallow: /player/
+Disallow: /prov4/
+Disallow: /remoteAcc/
+Disallow: /rss/
+Disallow: /sales-recording/
+Disallow: /sd/
+Disallow: /sitemap_gen/
+Disallow: /small_join_css/
+Disallow: /socialpro/
+Disallow: /tasks/
+Disallow: /temp/
+Disallow: /test/
+Disallow: /test-upload/
+Disallow: /tmp/
+Disallow: /to_svn/
+Disallow: /track/
+Disallow: /twitter-oauth/
+Disallow: /videos/talent-auditions.php
+Disallow: /webmail/
+Disallow: /zoiper/
+# list specific files robots are not allowed to index
+#
+#Disallow: /directory/foo.html
+#Disallow: /folder2/whatever.html
+#
+Disallow: /fb_login_new_window.php
+Disallow: /plussizemodeling_category.php
+Disallow: /plus_size_modeling_agencies_category.php
+Disallow: /movie-extras_category.php
+Disallow: /acting_careerp.php
+Disallow: /auditions-for-atlanta.php
+Disallow: /snoop_dogg.php
+Disallow: /Karina%20Smirnoff
+Disallow: /shannon_elizabaeth.php
+Disallow: /beyepinterview.php
+sitemap: http://www.exploretalent.com/sitemaps/sitemap.php
+#
+#User-agent: Xombot
+#Disallow: /
+###############################
+User-agent: Baiduspider
+Disallow: /

@@ -1,0 +1,122 @@
+<?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'static','a'=>'act','b'=>'','c'=>'','d'=>'','e'=>'','id'=>$this->userid,'type'=>$this->action_name)); ?>
+<br><br>
+<h1>Edit Dancer Profile</h1>
+
+<div id="edit_pictures">
+    <ul class="nav">
+        <li class="nav-one border_small"><a href="#primary_info" class="current">Add/Edit Talent Info</a></li>
+        <li class="nav-two border_small"><a href="#secondary_info">Add/Edit Resume &amp; About Me</a></li>
+    </ul>
+
+    <div class="list-wrap border_small">
+        <ul id="primary_info">
+            <li>
+                <div class="profile_content">
+                    <div class="main_detailmusic">
+                        <div class="settings_title">Change Talent Info</div>
+                        <?php $form = $this->editdance; ?>
+                        <form id="edit_dance_profile" action="<?php echo $form->getAction() ?>" method="<?php echo $form->getMethod() ?>">
+                            <table>
+                                <tr>
+                                    <td><?php echo $form->city->renderLabel(); ?></td>
+                                    <td><?php echo $form->city->renderViewHelper(); ?></td>
+                                    <td><?php echo $form->group_name->renderLabel(); ?></td>
+                                    <td><?php echo $form->group_name->renderViewHelper(); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $form->dance_style_1->renderLabel(); ?></td>
+                                    <td><?php echo $form->dance_style_1->renderViewHelper(); ?></td>
+                                    <td><?php echo $form->dance_style_2->renderLabel(); ?></td>
+                                    <td><?php echo $form->dance_style_2->renderViewHelper(); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $form->dance_style_3->renderLabel(); ?></td>
+                                    <td><?php echo $form->dance_style_3->renderViewHelper(); ?></td>
+                                    <td><?php echo $form->dance_style_4->renderLabel(); ?></td>
+                                    <td><?php echo $form->dance_style_4->renderViewHelper(); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $form->num_ppl_in_group->renderLabel(); ?></td>
+                                    <td><?php echo $form->num_ppl_in_group->renderViewHelper(); ?></td>
+                                    <td><?php echo $form->num_of_perfom->renderLabel(); ?></td>
+                                    <td><?php echo $form->num_of_perfom->renderViewHelper(); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $form->years_experience->renderLabel(); ?></td>
+                                    <td><?php echo $form->years_experience->renderViewHelper(); ?></td>
+                                    <td><?php echo $form->management->renderLabel(); ?></td>
+                                    <td><?php echo $form->management->renderViewHelper(); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $form->websites->renderLabel(); ?></td>
+                                    <td><?php echo $form->websites->renderViewHelper(); ?></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $form->dancer_background->renderLabel(); ?></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><?php echo $form->dancer_background->renderViewHelper(); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $form->searching_gig->renderLabel(); ?></td>
+                                    <td><?php echo $form->searching_gig->renderViewHelper(); ?></td>
+                                    <td><?php echo $form->searching_group_mem_des->renderLabel(); ?></td>
+                                    <td><?php echo $form->searching_group_mem_des->renderViewHelper(); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $form->influences->renderLabel(); ?></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><?php echo $form->influences->renderViewHelper(); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $form->searching_gig_des->renderLabel(); ?></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><?php echo $form->searching_gig_des->renderViewHelper(); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="submit" name="edit_dance_profile" id="edit_dance_profile" value="Submit" class="but_blue"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </form>
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul id="secondary_info" class="hide">
+            <li>
+                <div class="profile_content border_small">
+                    <div class="edit_about">
+                        <div class="settings_title">Edit Short Resume</div>
+                        <?php echo $this->editresume; ?>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+                <br>
+                <div class="profile_content border_small">
+                    <div class="edit_resume">
+                        <div class="settings_title">Edit About Me</div>
+                        <?php echo $this->editabout; ?>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

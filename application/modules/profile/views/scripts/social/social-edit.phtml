@@ -1,0 +1,103 @@
+<h1>
+	<a href="/profile/social/social-info/id/<?php echo $this->talentname['talentnum']; ?>"><?php echo $this->talentname['fname'].' '.$this->talentname['lname']?></a>
+</h1>
+
+<?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'social','a'=>'act','b'=>'','c'=>'','d'=>'','e'=>'','id'=>$this->talentname['talentnum'],'type'=>'social')); ?>
+<br><br><br>
+<h2>Edit Social Info</h2>
+
+<div class="profile_content border_small">
+    <div class="main_detaild">
+        <div class="settings_title">Change Talent Info</div>
+        <?php $form = $this->editacting; ?>
+        <form id="edit_acting_profile" action="<?php echo $form->getAction() ?>" method="<?php echo $form->getMethod() ?>">
+        	<table>
+			    <tr>
+			        <td><?php echo $form->city->renderLabel(); ?></td>
+			        <td><?php echo $form->city->renderViewHelper(); ?></td>
+			        <td><?php echo $form->height->renderLabel(); ?></td>
+			        <td><?php echo $form->height->renderViewHelper(); ?></td>
+                    <td><?php echo $form->weight->renderLabel(); ?></td>
+                    <td><?php echo $form->weight->renderViewHelper(); ?></td>
+			    </tr>
+			    <tr>
+                    <td><?php echo $form->bust->renderLabel(); ?></td>
+                    <td><?php echo $form->bust->renderViewHelper(); ?></td>
+			        <td><?php echo $form->shirt->renderLabel(); ?></td>
+			        <td><?php echo $form->shirt->renderViewHelper(); ?></td>
+			        <td><?php echo $form->waist->renderLabel(); ?></td>
+			        <td><?php echo $form->waist->renderViewHelper(); ?></td>
+			    </tr>
+			    <tr>
+			        <td><?php echo $form->hips->renderLabel(); ?></td>
+			        <td><?php echo $form->hips->renderViewHelper(); ?></td>
+			        <td><?php echo $form->sex->renderLabel(); ?></td>
+			        <td><?php echo $form->sex->renderViewHelper(); ?></td>
+                    <td><?php echo $form->build->renderLabel(); ?></td>
+                    <td><?php echo $form->build->renderViewHelper(); ?></td>
+			    </tr>
+			    <tr>
+                    <td><?php echo $form->dobmm->renderLabel(); ?></td>
+                    <td><?php echo $form->dobmm->renderViewHelper(); ?></td>
+			        <td><?php echo $form->dobdd->renderLabel(); ?></td>
+			        <td><?php echo $form->dobdd->renderViewHelper(); ?></td>
+			        <td><?php echo $form->dobyyyy->renderLabel(); ?></td>
+			        <td><?php echo $form->dobyyyy->renderViewHelper(); ?></td>
+			    </tr>
+			    <tr>
+			        <td><?php echo $form->hair->renderLabel(); ?></td>
+			        <td><?php echo $form->hair->renderViewHelper(); ?></td>
+			        <td><?php echo $form->hairstyle->renderLabel(); ?></td>
+			        <td><?php echo $form->hairstyle->renderViewHelper(); ?></td>
+                    <td><?php echo $form->eyes->renderLabel(); ?></td>
+                    <td><?php echo $form->eyes->renderViewHelper(); ?></td>
+			    </tr>
+			    <tr>
+                    <td><?php echo $form->dress->renderLabel(); ?></td>
+                    <td><?php echo $form->dress->renderViewHelper(); ?></td>
+			        <td><?php echo $form->size->renderLabel(); ?></td>
+			        <td><?php echo $form->size->renderViewHelper(); ?></td>
+			        <td><?php echo $form->shoe->renderLabel(); ?></td>
+			        <td><?php echo $form->shoe->renderViewHelper(); ?></td>
+			    </tr>
+			    <tr>
+			        <td><?php echo $form->ethnicity->renderLabel(); ?></td>
+			        <td><?php echo $form->ethnicity->renderViewHelper(); ?></td>
+			        <td></td>
+			        <td></td>
+			        <td></td>
+			        <td></td>
+			    </tr>
+			    <tr>
+			        <td><input type="submit" name="edit_acting_profile" id="edit_acting_profile" value="Submit" class="but_blue"></td>
+			        <td></td>
+			        <td></td>
+			        <td></td>
+			    </tr>
+			</table>
+		</form>
+    </div>
+    <div style="clear:both"></div>
+</div>
+
+<div class="profile_content border_small">
+    <div class="main_detaild">
+        <div class="settings_title">Edit your Relationship Status</div>
+        <?php echo $this->editrelationship; ?>
+    </div>
+    <div style="clear:both"></div>
+</div>
+
+<div class="et_notification et_info">
+    <div class="et_text">
+        <p><strong>Info!</strong>By filling in the Interests section you will be more likely to be found in more searches.</p>
+    </div>
+</div>
+
+<div class="profile_content border_small">
+    <div class="main_detaild">
+        <div class="settings_title">Edit your Performing Art Interest</div>
+        <?php echo $this->editinterests; ?>
+    </div>
+    <div style="clear:both"></div>
+</div>

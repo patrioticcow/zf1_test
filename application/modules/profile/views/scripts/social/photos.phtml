@@ -1,0 +1,70 @@
+<div class="social_right">
+		<?php echo $this->partial('partials/pagename.phtml', array( 'info' => $this->talentname, 'auth'=>$this->auth)); ?>
+
+        <div class="my_name">All Photo Galleries</div>
+        <br>
+        <?php if(($this->actingPictures == null) || ($this->modelingPictures == null) || ($this->musicianPictures == null) || ($this->dancePictures == null) || ($this->dynaminPictures == null)) {?>
+        <div class="et_notification et_info">
+			<div class="et_text">
+				 <p><strong>Info!</strong> No pictures?. Please <a style="display:inline;" href="/profiles/create/index/id/<?php echo $this->talentname['talentnum']; ?>"> add a Skill or a Talent </a> and upload pictures.</p>
+			</div>
+		</div>
+		<?php } ?>
+		<?php $size = '260'; ?>
+
+		<?php if($this->dynaminPictures != null) { ?>
+		<?php foreach($this->dynaminPictures as $val){
+			if($val->getTalentCategory() != null){
+		?>
+	        <div class="image_gallery">
+	            <a class="border_small gallery_image"
+	               href="<?php echo '/profiles/dynamic/pictures/type/'.$val->getTalentCategory()->getProfileCategory().'-'.$val->getTalentCategory()->getProfileCategoryId().'/gallery/'.$val->getGallery().'/id/'.$this->talentnum;?>"
+	               original-title="<?php echo $val->getTalentgallery()->getGalleryName();?>"
+		        >
+	                <img class="lazy" data-original="<?php echo CDN_IMAGES.'/'.$val->getMediaPath();?>" src="<?php echo CDN_JS_CSS; ?>/graphics/icons/grey1.gif" alt="Grey Icon" height="<?php echo $size; ?>"/>
+	                <noscript><img src="<?php echo CDN_IMAGES.'/'.$val->getMediaPath();?>" width="<?php echo $size; ?>"></noscript>
+	            </a>
+	        </div>
+	    <?php } } }?>
+
+
+		<?php if($this->actingPictures != null) {?>
+		<?php foreach($this->actingPictures as $val){ ?>
+	        <div class="image_gallery">
+	            <a class="border_small gallery_image" href="<?php echo '/profile/acting/gallery/id/'.$this->talentnum.'/group/'.$val->getGallery();?>" original-title="<?php echo $val->getTalentGallery()->getGalleryName();?>">
+	                <img class="lazy" data-original="<?php echo $val->getFullMediaPath();?>" src="<?php echo CDN_JS_CSS; ?>/graphics/icons/grey1.gif" alt="Grey Icon" width="<?php echo $size; ?>"/>
+	                <noscript><img src="<?php echo $val->getFullMediaPath();?>" height="<?php echo $size; ?>"></noscript>
+	            </a>
+	        </div>
+	    <?php } }?>
+
+		<?php if($this->modelingPictures != null) {?>
+		<?php foreach($this->modelingPictures as $val){?>
+	        <div class="image_gallery">
+	            <a class="border_small gallery_image" href="<?php echo '/profile/modeling/gallery/id/'.$this->talentnum.'/group/'.$val->getGallery();?>" original-title="<?php echo $val->getTalentGallery()->getGalleryName();?>">
+	                <img class="lazy" data-original="<?php echo $val->getFullMediaPath();?>" src="<?php echo CDN_JS_CSS; ?>/graphics/icons/grey1.gif" alt="Grey Icon" width="<?php echo $size; ?>"/>
+	                <noscript><img src="<?php echo $val->getFullMediaPath();?>" height="<?php echo $size; ?>"></noscript>
+	            </a>
+	        </div>
+	    <?php } }?>
+
+		<?php if($this->musicianPictures != null) {?>
+		<?php foreach($this->musicianPictures as $val){?>
+	        <div class="image_gallery">
+	            <a class="border_small gallery_image" href="<?php echo '/profile/musician/gallery/id/'.$this->talentnum.'/group/'.$val->getGallery();?>" original-title="<?php echo $val->getTalentGallery()->getGalleryName();?>">
+	                <img class="lazy" data-original="<?php echo $val->getFullMediaPath();?>" src="<?php echo CDN_JS_CSS; ?>/graphics/icons/grey1.gif" alt="Grey Icon" width="<?php echo $size; ?>"/>
+	                <noscript><img src="<?php echo $val->getFullMediaPath();?>" height="<?php echo $size; ?>"></noscript>
+	            </a>
+	        </div>
+	    <?php } }?>
+
+		<?php if($this->dancePictures != null) {?>
+		<?php foreach($this->dancePictures as $val){?>
+	        <div class="image_gallery">
+	            <a class="border_small gallery_image" href="<?php echo '/profile/dance/gallery/id/'.$this->talentnum.'/group/'.$val->getGallery();?>" original-title="<?php echo $val->getTalentGallery()->getGalleryName();?>">
+	                <img class="lazy" data-original="<?php echo $val->getFullMediaPath();?>" src="<?php echo CDN_JS_CSS; ?>/graphics/icons/grey1.gif" alt="Grey Icon" width="<?php echo $size; ?>"/>
+	                <noscript><img src="<?php echo $val->getFullMediaPath();?>" height="<?php echo $size; ?>"></noscript>
+	            </a>
+	        </div>
+	    <?php } }?>
+</div>

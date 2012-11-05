@@ -1,0 +1,28 @@
+<?php
+if(is_array($this->info)){
+	$name = $this->info['fname'].' '.$this->info['lname'];
+	$talentnum = $this->info['talentnum'];
+    $talentLogin = $this->info['talentlogin'];
+} else {
+	$name =  $this->info->getFname().' '.$this->info->getLname();
+	$talentnum = $this->info->getTalentnum();
+    $talentLogin = $this->info->getTalentlogin();
+}
+?>
+<div class="name_profile">
+	<?php $auth = $this->auth; ?>
+	<h1>
+		<a href="/<?php echo $talentLogin; ?>"><?php echo $name; ?></a>
+	</h1>
+	<?php if($auth['pro'] == 'pro'){ ?>
+		<div class="profile_pro"><img src="<?php echo CDN_JS_CSS; ?>/graphics/icons/Pro.png" height="21" width="90" alt="Go Pro" /></div>
+	<?php } ?>
+	<?php if($auth['pro'] != 'featured'){ ?>
+		<?php if(LOGGEDIN && ($talentnum == USERID)){ ?>
+		<a class="get_featured" href="http://talent.exploretalent.com/join_5_ft_1.php">GET FEATURED</a>
+		<?php } ?>
+	<?php } else { ?>
+		<div class="profile_featured"><img src="<?php echo CDN_JS_CSS; ?>/graphics/icons/Featured.png" height="21" width="90" alt="Get Featured"/></div>
+	<?php } ?>
+</div>
+<div style="clear: both;"></div>

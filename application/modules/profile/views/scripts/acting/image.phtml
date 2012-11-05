@@ -1,0 +1,11 @@
+
+<div class="social_right">
+	<?php echo $this->partial('partials/pagename.phtml', array( 'info' => $this->info, 'auth'=>$this->auth)); ?>
+	<?php echo $this->partial('partials/images.phtml',[
+             'title'=>'Acting & Modeling Image Gallery',
+             'action'=>'acting',
+             'allimages'=>$this->allimages,
+             'userid'=>$this->userid,
+             'action_name'=>$this->action_name
+        ]); ?>
+</div>

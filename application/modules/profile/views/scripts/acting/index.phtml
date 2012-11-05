@@ -1,0 +1,121 @@
+<?php $tf1 = $this->info->getTalentInfo1(); $tf2 = $this->info->getTalentInfo2(); ?>
+<?php $gender = ''; if($tf1->getSex() != null && $tf1->getSex() != ''){$gender = $tf1->getSex();} ?>
+<div class="social_right">
+	<?php echo $this->partial('partials/pagename.phtml', array( 'info' => $this->info, 'auth'=>$this->auth)); ?>
+
+    <div>
+        Age <?php echo $tf1->getTalentnum()->age; ?>,
+        <?php echo $gender; ?>,
+        from <?php echo $tf2 != null ? $tf2->getCity1() : 'n/a'; ?>
+    </div>
+    <br>
+    <div class="list_carousel border_tiny">
+        <ul id="foo0"><div class="loading_ajax"><img src="<?php echo CDN_JS_CSS; ?>/graphics/loading.gif" alt="Loading"/>Loading...</div></ul>
+        <div style="clear:both;"></div>
+    </div>
+
+    <h2>Acting &amp; Modeling Profile</h2>
+
+    <?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'static','a'=>'act','b'=>'','c'=>'','d'=>'','e'=>'','id'=>$this->info->getTalentnum(),'type'=>'acting')); ?>
+
+	<div class="profile_details border_small">
+        <div class="home_advice_green">General Info
+            <?php if(LOGGEDIN && (USERID == $this->notme)){  ?>
+                <a class="profile_details_edit" href="/profile/acting/edit/id/<?php echo $this->info->getTalentnum(); ?>" title="Edit Acting & Modeling Info">
+                    <span class="edit_profiles"></span>
+                </a>
+                <?php } ?>
+        </div>
+		<table>
+			<tr>
+				<td>
+					<span class="span_acting">Height</span>
+					<?php if($tf1->getHeightinches() != null && $tf1->getHeightinches() != 0){
+					if($tf1->getHeightinches() > 11){
+						$feetInches = Application_Model_Functions::displayHeightGivenInches($tf1->getHeightinches());
+					} else {
+						$feetInches = $tf1->getHeightfeet().'\'  '.$tf1->getHeightinches().'\'\'';
+					}}?>
+					<span class="span_acting_second"><?php echo  $tf1->getHeightinches() > 0 ? $feetInches : 'n/a'; ?></span>
+				</td>
+				<td>
+					<span class="span_acting">Weight</span>
+					<span class="span_acting_second"><?php echo $tf1->getWeightpounds() ? $tf1->getWeightpounds().' lbs' : 'n/a'; ?></span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="span_acting">Body Type</span>
+					<span class="span_acting_second"><?php echo $tf1->getBuild() ? $tf1->getBuild() : 'n/a'; ?></span>
+				</td>
+				<td>
+					<span class="span_acting">Ethnicity</span>
+					<span class="span_acting_second"><?php echo $tf2 != null ? $tf2->getEthnicity() : 'n/a'; ?></span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="span_acting">Hair Color</span>
+					<span class="span_acting_second"><?php echo $tf1->getHaircolor() ? $tf1->getHaircolor() : 'n/a'; ?></span>
+				</td>
+				<td>
+					<span class="span_acting">Eyes Color</span>
+					<span class="span_acting_second"><?php echo $tf1->getEyecolor() ? $tf1->getEyecolor() : 'n/a'; ?></span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="span_acting">Bust</span>
+					<span class="span_acting_second"><?php echo $tf1->getBust() ? $tf1->getBust() : 'n/a'; ?></span>
+				</td>
+				<td>
+					<span class="span_acting">Waist</span>
+					<span class="span_acting_second"><?php echo $tf1->getWaist() ? $tf1->getWaist() : 'n/a'; ?></span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="span_acting">Hips</span>
+					<span class="span_acting_second"><?php echo $tf1->getHips() ? $tf1->getHips() : 'n/a'; ?></span>
+				</td>
+				<td>
+					<span class="span_acting">Dress</span>
+					<span class="span_acting_second"><?php echo $tf1->getDress() ? $tf1->getDress() : 'n/a'; ?></span>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="clear:both"></div>
+        <div class="border_small">
+            <div class="home_advice_green">About Me</div>
+            <p><?php echo $tf2 != null ? $tf2->getSpecialSkills() : 'n/a'; ?></p>
+        </div>
+            <div style="clear:both"></div>
+        <div class="border_small">
+            <div class="home_advice_green">Short Resume</div>
+            <p><?php echo $tf2 != null ? $tf2->getExperience() : 'n/a'; ?></p>
+        </div>
+
+<div style="clear:both"></div>
+    <?php if(LOGGEDIN){ ?>
+    <div class="et_notification et_info">
+        <div class="et_text">
+            <p><strong>Info!</strong> update your profile to get more accurate matches
+            <a class="inline_link" href="/notifications/index/castings-jobs-preferences/id/<?php echo USERID; ?>" title="update Acting & Modeling Profile">Casting/Job Preferences</a>.</p>
+        </div>
+    </div>
+    <div class="border_small">
+        <div class="home_advice_green">I Am Most Interested In The Following Types of Casting Calls &amp; Auditions:</div>
+        <div class="profile_content">
+            <ul class="matched_auditions">
+                <?php foreach ($this->castings as $key=>$val) {?>
+                <li><a href="/castings/<?php echo $key; ?>" title="<?php echo str_replace("_", " ", $key); ?>"><?php echo str_replace("_", " ", $key); ?></a></li>
+                <?php } ?>
+            </ul>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+    <?php } ?>
+
+</div>
+<div id="general_talentnum" class="<?php echo $this->info->getTalentnum(); ?>"></div>

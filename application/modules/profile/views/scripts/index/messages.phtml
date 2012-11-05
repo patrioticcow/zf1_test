@@ -1,0 +1,23 @@
+<h1>Messages</h1>
+<br>
+<?php if($this->messages[0] != null) {?>
+    <?php foreach($this->messages as $val) {?>
+    <div class="profile_content border_small">
+        <div class="main_detail_from">
+            <a href="/profile/social/social-info/id/<?php echo $val->getFrom(); ?>">
+                <img src="<?php echo $val->getImageFrom(); ?>" width="70" height="105" />
+            </a>
+        </div>
+        <div class="main_detail_messages">
+            <div class="my_name"><?php echo $val->_name_from['fname'].' '.$val->_name_from['lname']; ?>
+                <span id="<?php echo $val->getId(); ?>" class="message_delete close_icon"></span>
+            </div>
+            <div class="messages_message"><?php echo $val->getMessage(); ?></div>
+            <div class="messages_date"><?php echo $val->getSentDate(); ?></div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <?php } ?>
+<?php }  else { ?>
+    <div>No messages Here.</div>
+<?php } ?>

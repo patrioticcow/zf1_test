@@ -1,0 +1,11 @@
+<?php echo $this->partial('partials/pagename.phtml', array( 'info' => $this->info, 'auth'=>$this->auth)); ?>
+<?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'static','a'=>'','b'=>'','c'=>'','d'=>'','e'=>'act','id'=>$this->userid,'type'=>'dance')); ?>
+<br><br>
+<h1>Latest Dancers like you</h1>
+<div class="border_small" id="matched_dancers">
+    <div class="loading"></div>
+    <ul class="matched_musicians_list">
+        <div style="clear: both;"></div>
+    </ul>
+    <a href="/talents/index/musicians" class="gbutton gbig" title="Search Musicians Profiles" >Search more musicians</a>
+</div>

@@ -1,0 +1,54 @@
+<div class="header_default">
+<div class="header_etlogo">
+  <a href="/" id="logo_default">
+    Explore Talent.com
+  </a>
+</div>
+   <div id="m-menu_default">
+       <?php //if(LOGGEDIN){ echo Application_Menu_ProfileTopMenu::getSubMenuRight(ROLE);} ?>
+   </div>
+   <div class="search_header_form">
+   		<div id="switch_top_menu" class=""></div>
+       <?php echo $form = new Application_Form_Search(); ?>
+   </div>
+   <?php if(LOGGEDIN){?>
+   <div class="right_topmenu">
+       <?php
+       $name = Application_Model_Functions::getName(USERID);
+
+	   $image = Media_Model_MediaAbstract::getSocialPic(USERID, 'media_social', 'th');
+       ?>
+
+		<div class="topmenu_home">
+			<div class="hover_item">
+				<ul class="stn-menu stn_menu red">
+					<li class="hasSubNav hasArrow">
+						<a href="javascript:;">Home</a>
+						<ul>
+							<li><a href="<?php echo SECURE_DOMAIN; ?>/talents/index/update/<?php echo USERID; ?>">Change Password</a></li>
+							<li><a href="/profile/social/social-info/id/<?php echo USERID; ?>">My Account</a></li>
+							<li><a href="/about/privacy">Privacy</a></li>
+							<li style="color:#eee">.</li>
+                            <?php if(LOGGEDIN && $name['pro'] == 'n/a'){?>
+							<li><a class="new_green" href="/subscription">Get Pro</a></li>
+                            <?php } ?>
+							<li style="color:#eee">.</li>
+							<li><a class="" href="/login/logout">Log Out</a></li>
+						</ul>
+
+					</li>
+				</ul>
+			</div>
+		</div>
+       <a href="/profile/social/social-info/id/<?php echo USERID; ?>">
+	       <div class="topmenu_name"><?php echo $name['fname']; ?>&nbsp;&nbsp;|&nbsp;&nbsp;</div>
+       </a>
+       <a href="/profile/social/social-info/id/<?php echo USERID; ?>">
+	       <div class="topmenu_image">
+	        <img src="<?php echo $image; ?>" width="20" height="30" alt="User Image"/>
+	       </div>
+       </a>
+   </div>
+   <?php } ?>
+
+</div>

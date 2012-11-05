@@ -1,0 +1,16 @@
+<?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'static','a'=>'','b'=>'act','c'=>'','d'=>'','e'=>'','id'=>$this->userid,'type'=>$this->action_name)); ?>
+
+<div style="clear:both"></div>
+<div class="tabcontent border_small">
+    <?php if($this->allimages){ ?>
+        <?php foreach($this->allimages as $val){ ?>
+        <div class="image_gallery">
+            <a class="gallery_image" id="single_image"  rel="group1" href="<?php echo $val->getFullMediaPath();?>">
+                <img class="lazy" data-original="<?php echo $val->getFullMediaPath();?>" src="<?php echo CDN_JS_CSS; ?>/graphics/icons/grey1.gif" height="244" alt="acting modeling dance musician images" />
+                <noscript><img src="<?php echo $val->getFullMediaPath();?>" height="244"></noscript>
+            </a>
+        </div>
+    <?php } }?>
+    <div style="clear:both"></div>
+</div>
+<div style="clear:both"></div>

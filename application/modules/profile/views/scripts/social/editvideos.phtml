@@ -1,0 +1,54 @@
+<div class="profile_content border_small">
+
+	<h1>
+		<a href="/profile/social/social-info/id/<?php echo $this->talentname['talentnum']; ?>"><?php echo $this->talentname['fname'].' '.$this->talentname['lname']?></a>
+	</h1>
+
+    <div class="my_name">Auditions Profile</div>
+    <div style="clear:both"></div>
+    <div class="main_detaild">
+        <div class="settings_title">Upload Video</div>
+        <?php echo $this->videoupload; ?>
+    </div>
+    <div style="clear:both"></div>
+
+    <?php echo Media_Model_MediaAbstract::videoPlayer('jp_container_video_edit', 'video_jPlayer_video_edit', 'edit_acting_video') ?>
+    <?php if($this->videos){ ?>
+     <script type="text/javascript">
+    var playlist =
+        [
+            <?php foreach($this->videos as $val){?>
+                    {
+                        edit:  <?php echo json_encode('
+                            <a href="/media/remove/video/social/'.USERID.'/'.$val->getVideoId().'" class="gbutton gright delete_media">Delete</a>
+                        ');?>,
+                        title:  <?php echo json_encode($val->getTitle());?>,
+                        artist: <?php echo json_encode($val->getDes());?>,
+                        poster: "<?php echo $val->getTalentnum()->folder.$val->getVideoId();?>.jpg",
+                        thumb:  "<?php echo $val->getTalentnum()->folder.$val->getVideoId();?>.jpg",
+                        flv:    "<?php echo $val->getTalentnum()->folder.$val->getVideoId();?>.flv",
+                    },
+            <?php }?>
+        ];
+    </script>
+    <?php } ?>
+     <script type="text/javascript">
+    $(document).ready(function(){
+
+        new jPlayerPlaylist({
+            jPlayer: "#video_jPlayer_video_edit",
+            cssSelectorAncestor: "#jp_container_video_edit"
+        }, playlist,
+        {
+            swfPath: "/js/jPlayer/",
+            supplied: "flv",
+            size: {
+                width: "640px",
+                height: "360px",
+                cssClass: "jp-video-video_edit"
+                }
+        });
+    });
+    </script>
+
+</div>

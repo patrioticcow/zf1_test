@@ -1,0 +1,60 @@
+<?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'static','a'=>'','b'=>'','c'=>'act','d'=>'','e'=>'','id'=>$this->userid,'type'=>$this->action_name)); ?>
+<br><br>
+<h1>
+	<a href="/profile/social/social-info/id/<?php echo $this->talentname['talentnum']; ?>"><?php echo $this->talentname['fname'].' '.$this->talentname['lname']?></a>
+</h1>
+ <script type="text/javascript">var playlist;</script>
+<h1>Edit <?php echo $this->title; ?> Audio</h1>
+<div class="profile_content border_small">
+	<div style="clear:both"></div>
+	<div class="main_detaild">
+		<div class="settings_title">Upload Audio</div>
+		<p class="red">* the file will be available a few minutes after upload</p>
+		<?php echo $this->audioupload; ?>
+	</div>
+	<div style="clear:both"></div>
+	<br>
+	<?php if($this->audio){?>
+	<?php echo Media_Model_MediaAbstract::videoPlayer('jp_container_audio_edit', 'audio_jPlayer_audio_edit', 'edit_acting_audio') ?>
+		 <script type="text/javascript">
+		playlist =
+			[
+		<?php foreach($this->audio as $val){?>
+				{
+				    edit:  <?php echo json_encode('
+	                            <a href="/media/remove/'.$this->titlepath.'/audio/'.USERID.'/'.$val->getSongId().'" class="gbutton gright delete_media">Delete</a>
+	                ');?>,
+					title:  <?php echo json_encode($val->getTitle());?>,
+	                artist: <?php echo json_encode($val->getDes());?>,
+					mp3: "<?php echo $val->getTalentnum()->folder.$val->getSongId();?>.mp3"
+				},
+		<?php }?>
+			];
+		</script>
+
+		 <script type="text/javascript">
+		$(document).ready(function(){
+
+			new jPlayerPlaylist({
+				jPlayer: "#audio_jPlayer_audio_edit",
+				cssSelectorAncestor: "#jp_container_audio_edit"
+			}, playlist,
+			{
+				swfPath: "/js/jPlayer/",
+				supplied: "mp3",
+				wmode: "window"
+			});
+		});
+		</script>
+	<?php } else { ?>
+		<div class="et_notification et_info">
+			<div class="et_text">
+				 <p><strong>Info!</strong> No audio files.
+                <p class="contact_cs">Contact
+                    <a href="/requests/index/contact" target="_blank">Customer Service</a>
+                    if you have any questions!"
+                </p>
+			</div>
+		</div>
+	<?php } ?>
+</div>

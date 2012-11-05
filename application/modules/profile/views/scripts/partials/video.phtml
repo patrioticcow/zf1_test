@@ -1,0 +1,53 @@
+<?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'static','a'=>'','b'=>'','c'=>'','d'=>'act','e'=>'','id'=>$this->userid,'type'=>$this->action_name)); ?>
+<br><br>
+<?php if($this->videos){?>
+
+<div style="clear:both"></div>
+<div class="tabcontent">
+     <script type="text/javascript">var playlistacting = ''; var playlist =  '';</script>
+    <?php echo Media_Model_MediaAbstract::videoPlayer('video_jPlayer_video_acting', 'jp_container_video_acting', 'edit_acting_videos') ?>
+
+         <script type="text/javascript">
+        playlistacting =
+            [
+        <?php foreach($this->videos as $val){?>
+                {
+                    edit: '',
+                    title:  <?php echo json_encode($val->getTitle());?>,
+                    artist: <?php echo json_encode($val->getDes());?>,
+                    poster: "<?php echo $val->getTalentnum()->folder.$val->getVideoId();?>.jpg",
+                    thumb:  "<?php echo $val->getTalentnum()->folder.$val->getVideoId();?>.jpg",
+                    flv:    "<?php echo $val->getTalentnum()->folder.$val->getVideoId();?>.flv",
+                },
+        <?php }?>
+            ];
+        console.log(playlist);
+        </script>
+
+     <script type="text/javascript">
+    $(document).ready(function(){
+
+        new jPlayerPlaylist({
+            jPlayer: "#jp_container_video_acting",
+            cssSelectorAncestor: "#video_jPlayer_video_acting"
+        }, playlistacting,
+        {
+            swfPath: "/js/jPlayer/",
+            supplied: "flv",
+            size: {
+                width: "590px",
+                cssClass: "jp-video-video_edit"
+            }
+        });
+    });
+    </script>
+</div>
+<?php } else { ?>
+	<div class="et_notification et_info">
+		<div class="et_text">
+			<p><strong>Info!</strong> No videos here.<a class="inline_link" href="/profile/musician/editvideo/id/<?php echo USERID; ?>">Upload Some</a></p>
+		</div>
+	</div>
+<?php } ?>
+
+<div style="clear:both"></div>

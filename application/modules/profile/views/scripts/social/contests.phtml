@@ -1,0 +1,74 @@
+<?php echo $this->partial('partials/pagename.phtml', array( 'info' => $this->talentname, 'auth'=>$this->auth)); ?>
+
+<?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'social','a'=>'','b'=>'','c'=>'act','d'=>'','e'=>'','id'=>$this->userid,'type'=>'social')); ?>
+<br><br>
+<?php if($this->contests){ ?>
+
+<div id="edit_pictures">
+    <ul class="nav">
+        <li class="nav-one border_small"><a href="#current_contests" class="current">My current contest entries</a></li>
+        <li class="nav-two border_small"><a href="#past_contests">My past contest entries</a></li>
+    </ul>
+
+    <div class="list-wrap border_small">
+        <ul id="current_contests">
+            <li>
+                <?php foreach($this->contests as $row){ ?>
+                <?php if($row->getEndDate() >= time()) { ?>
+                    <div class="contest_container">
+                        <div class="contest_bottom_row">
+                            <div class="contest_description">
+                                <div class="contest_bottom_link">
+                                    <a href="/contests/<?php echo $row->getTitle()->url.'_'.$row->getContestId();?>">
+                                        <div class="contest_image_link" style="background:transparent url('<?php echo CDN_IMAGES; ?>/contest_media/<?php echo $row->getThumb(); ?>') no-repeat 0 0;"></div>
+                                    </a>
+                                </div>
+                                <div class="small_content">
+                                    <div class="contest_name">
+                                        <a href="/contests/<?php echo $row->getTitle()->url.'_'.$row->getContestId();?>"><?php echo $row->getTitle()->name; ?></a>
+                                    </div>
+                                    <div class="contest_description_text"><?php echo $row->getDescription(); ?></div>
+                                    <div class="contest_end_ts">
+                                        <div class="contest_date">Enter By: <span><?php echo date('m-d-Y', $row->getEndDate()); ?></span></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                <?php } ?>
+            </li>
+        </ul>
+        <ul id="past_contests" class="hide">
+            <li>
+                <?php foreach($this->contests as $row){ ?>
+                <?php if($row->getEndDate() < time()) { ?>
+                    <div class="contest_container">
+                        <div class="contest_bottom_row">
+                            <div class="contest_description">
+                                <div class="contest_bottom_link">
+                                    <div class="contest_image_link" style="background:transparent url('<?php echo CDN_IMAGES; ?>/contest_media/<?php echo $row->getThumb(); ?>') no-repeat 0 0;"></div>
+                                </div>
+                                <div class="small_content">
+                                    <div class="contest_name">
+                                        <a href="/contests/<?php echo $row->getTitle()->url.'_'.$row->getContestId();?>"><?php echo $row->getTitle()->name; ?></a>
+                                    </div>
+                                    <div class="contest_description_text"><?php echo $row->getDescription(); ?></div>
+                                    <div class="contest_end_ts">
+                                        <div class="contest_date">Ended On: <span><?php echo date('m-d-Y', $row->getEndDate()); ?></span></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                <?php } ?>
+            </li>
+        </ul>
+    </div>
+</div>
+<?php } ?>

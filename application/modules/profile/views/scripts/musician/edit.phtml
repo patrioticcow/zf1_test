@@ -1,0 +1,149 @@
+<?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'static','a'=>'act','b'=>'','c'=>'','d'=>'','e'=>'','id'=>$this->userid,'type'=>$this->action_name)); ?>
+<br><br>
+<h1>Edit Musician Profile</h1>
+
+ <div id="edit_pictures">
+     <ul class="nav">
+         <li class="nav-one border_small"><a href="#primary_info" class="current">Add/Edit Talent Info</a></li>
+         <li class="nav-two border_small"><a href="#secondary_info">Add/Edit Resume &amp; About Me</a></li>
+     </ul>
+
+     <div class="list-wrap border_small">
+         <ul id="primary_info">
+             <li>
+                 <div class="profile_content">
+                     <div class="main_detailmusic">
+                         <div class="settings_title">Change Talent Info</div>
+                         <?php $form = $this->editmusician; ?>
+                         <form id="edit_acting_profile" action="<?php echo $form->getAction() ?>" method="<?php echo $form->getMethod() ?>">
+                             <table>
+                                 <tr>
+                                     <td><?php echo $form->city->renderLabel(); ?></td>
+                                     <td><?php echo $form->city->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->band_name->renderLabel(); ?></td>
+                                     <td><?php echo $form->band_name->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->music_type2->renderLabel(); ?></td>
+                                     <td><?php echo $form->music_type2->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->music_type3->renderLabel(); ?></td>
+                                     <td><?php echo $form->music_type3->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->music_type4->renderLabel(); ?></td>
+                                     <td><?php echo $form->music_type4->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->music_type5->renderLabel(); ?></td>
+                                     <td><?php echo $form->music_type5->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->band_type->renderLabel(); ?></td>
+                                     <td><?php echo $form->band_type->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->genre->renderLabel(); ?></td>
+                                     <td><?php echo $form->genre->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->genre2->renderLabel(); ?></td>
+                                     <td><?php echo $form->genre2->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->genre3->renderLabel(); ?></td>
+                                     <td><?php echo $form->genre3->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->genre4->renderLabel(); ?></td>
+                                     <td><?php echo $form->genre4->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->record_label->renderLabel(); ?></td>
+                                     <td><?php echo $form->record_label->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->label_type->renderLabel(); ?></td>
+                                     <td><?php echo $form->label_type->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->number_of_gigs->renderLabel(); ?></td>
+                                     <td><?php echo $form->number_of_gigs->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->years_experience->renderLabel(); ?></td>
+                                     <td><?php echo $form->years_experience->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->management->renderLabel(); ?></td>
+                                     <td><?php echo $form->management->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->studio_musician->renderLabel(); ?></td>
+                                     <td><?php echo $form->studio_musician->renderViewHelper(); ?></td>
+                                     <td><?php echo $form->searching_band->renderLabel(); ?></td>
+                                     <td><?php echo $form->searching_band->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->searching_band_mem->renderLabel(); ?></td>
+                                     <td></td><td></td><td></td>
+                                 </tr>
+                                 <tr>
+                                     <td colspan="4"><?php echo $form->searching_band_mem->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->searching_gig->renderLabel(); ?></td>
+                                     <td><?php echo $form->searching_gig->renderViewHelper(); ?></td>
+                                     <td></td><td></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->searching_gig_des->renderLabel(); ?></td>
+                                     <td></td><td></td><td></td>
+                                 </tr>
+                                 <tr>
+                                     <td colspan="4"><?php echo $form->searching_gig_des->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->music_instruments->renderLabel(); ?></td>
+                                     <td><?php echo $form->music_instruments->renderViewHelper(); ?></td>
+                                     <td></td><td></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->websites->renderLabel(); ?></td>
+                                     <td><?php echo $form->websites->renderViewHelper(); ?></td>
+                                     <td></td><td></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->des_1->renderLabel(); ?></td>
+                                     <td></td><td></td><td></td>
+                                 </tr>
+                                 <tr>
+                                     <td colspan="4"><?php echo $form->des_1->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><?php echo $form->major_influence->renderLabel(); ?></td>
+                                     <td></td><td></td><td></td>
+                                 </tr>
+                                 <tr>
+                                     <td colspan="4"><?php echo $form->major_influence->renderViewHelper(); ?></td>
+                                 </tr>
+                                 <tr>
+                                     <td><input type="submit" name="edit_acting_profile" id="edit_acting_profile" value="Submit" class="but_blue"></td>
+                                     <td></td><td></td><td></td>
+                                 </tr>
+                             </table>
+                         </form>
+                         <div style="clear:both"></div>
+                     </div>
+                 </div>
+             </li>
+         </ul>
+         <ul id="secondary_info" class="hide">
+             <li>
+                 <div class="profile_content">
+                     <div class="edit_about">
+                         <div class="settings_title">Edit Short Resume</div>
+                         <?php echo $this->editresume; ?>
+                     </div>
+                     <div style="clear:both"></div>
+                 </div>
+                 <br>
+                 <div class="profile_content">
+                     <div class="edit_resume">
+                         <div class="settings_title">Edit About Me</div>
+                         <?php echo $this->editabout; ?>
+                     </div>
+                     <div style="clear:both"></div>
+                 </div>
+
+             </li>
+         </ul>
+     </div>
+</div>

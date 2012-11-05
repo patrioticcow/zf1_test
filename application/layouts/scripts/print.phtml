@@ -1,0 +1,49 @@
+<?php
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('ExploreTalent.com');
+
+$this->headLink()->appendStylesheet(CDN_JS_CSS.'/css/normalize.css');
+$this->headLink()->setStylesheet('/css/global/print.css', 'screen,print');
+
+$this->headScript()->appendFile(CDN_JS_CSS.'/js/ui/jquery.effects.core.js');
+
+$this->doctype();
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<?php
+echo $this->headMeta();
+echo $this->headTitle();
+echo $this->headLink();
+?>
+
+<!--[if gte IE 9]>
+  <style type="text/css">
+    .gradient {
+       filter: none;
+    }
+  </style>
+<![endif]-->
+</head>
+
+<body>
+
+<div id="container" class="container">
+	<div id="main_container_join" class="main_container no-left-main">
+	    <?php echo $this->layout()->content; ?>
+	</div>
+</div>
+
+<div style="clear:both"></div>
+
+
+<?php
+	echo $this->headScript();
+?>
+
+</body>
+</html>

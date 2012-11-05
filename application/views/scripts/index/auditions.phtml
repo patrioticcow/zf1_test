@@ -1,0 +1,52 @@
+
+<div class="page_container">
+
+<h2>
+<?php echo $this->title; ?>
+</h2>
+
+<?php echo $this->messages; ?>
+
+<div class="auditions_table">
+<div class="auditions_menu">
+<!--    <a href="/auditions/index/acting" class="auditions_menu_item">Acting</a>-->
+<!--    <a href="/auditions/index/modeling" class="auditions_menu_item">Modeling</a>-->
+<!--    <a href="/auditions/index/music" class="auditions_menu_item">Music</a>-->
+<!--    <a href="/auditions/index/dance" class="auditions_menu_item">Dance</a>-->
+<!--    <a href="/auditions/index/crew" class="auditions_menu_item">Crew</a>-->
+    <a href="<?php echo $this->url(array(),'acting_route');?>" class="auditions_menu_item">Acting</a>
+    <a href="<?php echo $this->url(array(),'modeling_route');?>" class="auditions_menu_item">Modeling</a>
+    <a href="<?php echo $this->url(array(),'dance_route');?>" class="auditions_menu_item">Dance</a>
+    <a href="<?php echo $this->url(array(),'music_route');?>" class="auditions_menu_item">Music</a>
+    <a href="<?php echo $this->url(array(),'crew_route');?>" class="auditions_menu_item">Crew</a>
+</div>
+
+
+Current Number of <?php echo $this->audition_type; ?> Auditions: <?php echo $this->count; ?>
+
+<div class="audition_header"><?php echo $this->audition_type; ?> Auditions</div>
+<div class="audition_header">Location</div>
+<div class="audition_header">Project Type</div>
+
+
+<?php foreach($this->auditions as $audition): ?>
+<div class="audition_sep"></div>
+<div class="audition_field">
+    <a href="/auditions/find/<?php echo $audition->getAuditionId(); ?>"><?php echo $audition->getName(); ?></a>
+</div>
+<div class="audition_field">
+    <?php echo $audition->getLocation(); ?>
+</div>
+<div class="audition_field">
+    <?php echo $audition->getProjectType(); ?>
+</div>
+
+<?php endforeach; ?>
+
+
+<div class="paginator"><?php echo $this->paginator; ?></div>
+
+</div>
+
+</div>
+

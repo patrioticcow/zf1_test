@@ -1,0 +1,184 @@
+<?php $talentci = $this->info; $tf1 = $this->info->getTalentInfo1(); ?>
+
+<div class="social_right">
+
+	<?php echo $this->partial('partials/pagename.phtml', array( 'info' => $this->info, 'auth'=>$this->auth)); ?>
+	<?php $gender = ''; if($tf1->getSex() != null && $tf1->getSex() != ''){$gender = $tf1->getSex();} ?>
+
+    <div>
+        Age <?php echo $tf1 != null ? $tf1->getTalentnum()->age : 'n/a'; ?>,
+	    <?php echo $gender; ?>,
+        from <?php echo $talentci != null ? $talentci->getCity().' '.$talentci->getState().', ' : 'n/a'; ?>
+        <span class="relationship_status"></span> <?php echo $this->relationship; ?>
+        <?php if(LOGGEDIN && (USERID == $this->notme)){  ?>
+            <a href="/profile/social/social-edit/id/<?php echo USERID; ?>" class="edit_pref" title="Edit"><span></span></a>
+        <?php } ?>
+    </div>
+    <br>
+	<div class="list_carousel border_tiny">
+		<ul id="foo0"><div class="loading_ajax"><img src="<?php echo CDN_JS_CSS; ?>/graphics/loading.gif" alt="Loading"/>Loading...</div></ul>
+		<div style="clear:both;"></div>
+	</div>
+
+    <?php echo $this->partial('partials/top_menu.phtml', array('profile'=>'social','a'=>'act','b'=>'','c'=>'','d'=>'','e'=>'','id'=>$talentci->getTalentnum(),'type'=>'social')); ?>
+
+    <?php $display = ''; $coverImg = Media_Model_MediaAbstract::getSocialPic($talentci->getTalentnum(), 'media_cover', null, 'cover', null, false); ?>
+
+    <?php if($coverImg == '/graphics/filler.jpg'){?>
+        <?php if(USERID != $this->notme){$display = "display: none;";} ?>
+    <?php } ?>
+
+    <div class="social_info_cover_photo" style="<?php echo $display; ?>">
+        <div class="social_info_cover_info">
+            <?php if($coverImg != '/graphics/filler.jpg'){?>
+                <img src="<?php echo $coverImg.'?'.time(); ?>" width="570" alt="Profile Cover Image" />
+                <?php if(LOGGEDIN && USERID == $this->notme){ ?>
+                <a id="cover_photo_inline" href="#cover_photo_data" class="cover_photo_data_image">
+                    <img src="<?php echo CDN_JS_CSS; ?>/graphics/icons/Edit20.png" width="20" height="20" title="Main Sidebar Picture" />
+                </a>
+                <?php } ?>
+            <?php } else { ?>
+                <?php if(LOGGEDIN && (USERID == $this->notme)){  ?>
+                <a id="cover_photo_inline" href="#cover_photo_data">Upload an picture</a>
+                <p><i>Choose any image you want plople to see when they visit your profile</i></p>
+                <p><i>Minimum width 560. Optimal image size is 560 x 260</i></p>
+                <?php echo $this->messages[0]['success']; ?>
+                <?php } ?>
+            <?php } ?>
+            <?php if($this->errors != null) foreach($this->errors as $val){ echo '<br><p class="cover_error">Error: '.$val.'</p>'; }?>
+        </div>
+    </div>
+    <div style="display:none">
+        <div id="cover_photo_data">
+            <p><i>Choose any image you want plople to see when they visit your profile</i></p>
+            <p><i>Minimum width 560. Optimal image size is 560 x 260</i></p>
+            <br>
+            <?php echo $this->cover;?>
+            <div style="clear: both;"></div>
+            <?php if($coverImg != '/graphics/filler.jpg'){?>
+                <br><p>or</p><br>
+                <form enctype="multipart/form-data" action="" method="post">
+                    <input type="submit" name="remove_picture_cover" value="Remove Cover Picture">
+                </form>
+            <?php } ?>
+        </div>
+    </div>
+
+    <div class="profile_details border_tiny">
+        <div class="home_advice">General Info
+        <?php if(LOGGEDIN && (USERID == $this->notme)){  ?>
+            <a class="profile_details_edit_white" href="/profile/social/social-edit/id/<?php echo $talentci->getTalentnum(); ?>" title="Edit Social Info">
+                <span class="edit_profiles"></span>
+            </a>
+        <?php } ?>
+        </div>
+	    <table>
+		    <tr>
+		        <td>
+					<span class="span_acting">Talent Url</span>
+			        <span class="span_acting_second">
+				        <a href="<?php echo DOMAIN; ?>/<?php echo $talentci->getTalentlogin(); ?>">www.exploretalent.com/<?php echo $talentci->getTalentlogin(); ?></a>
+			        </span>
+		        </td>
+		        <td>
+			        <span class="span_acting">Talent Number</span>
+					<span class="span_acting_second"><?php echo $talentci->getTalentnum(); ?></span>
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+			        <?php if($tf1->getHeightinches() != null && $tf1->getHeightinches() != 0){
+			        if($tf1->getHeightinches() > 11){
+				        $feetInches = Application_Model_Functions::displayHeightGivenInches($tf1->getHeightinches());
+			        } else { $feetInches = $tf1->getHeightfeet().'\'  '.$tf1->getHeightinches().'\'\''; }
+			        ?>
+				        <span class="span_acting">Height</span>
+				        <span class="span_acting_second"><?php echo $feetInches; ?></span>
+			        <?php } ?>
+		        </td>
+		        <td>
+			        <?php $wp = ($tf1->getWeightpounds() != null && $tf1->getWeightpounds() != 0) ? $tf1->getWeightpounds().' lbs' : 'n/a'; ?>
+			        <span class="span_acting">Weight</span>
+			        <span class="span_acting_second"><?php echo $wp; ?></span>
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+			        <?php $build = ($tf1->getBuild() != null && $tf1->getBuild() != '') ? $tf1->getBuild() : 'n/a'; ?>
+			        <span class="span_acting">Body Type</span>
+			        <span class="span_acting_second"><?php echo $build; ?></span>
+
+		        </td>
+		        <td>
+			        <?php $eth = ($tf1->getEthnicity() != null && $tf1->getEthnicity() != '') ? $tf1->getEthnicity() : 'n/a';?>
+			        <span class="span_acting">Ethnicity</span>
+			        <span class="span_acting_second"><?php echo $eth; ?></span>
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+			        <?php $hc = ($tf1->getHaircolor() != null && $tf1->getHaircolor() != '') ? $tf1->getHaircolor() : 'n/a';?>
+			        <span class="span_acting">Hair Color</span>
+			        <span class="span_acting_second"><?php echo $hc; ?></span>
+		        </td>
+		        <td>
+			        <?php $ec = ($tf1->getEyecolor() != null && $tf1->getEyecolor() != '') ? $tf1->getEyecolor() :'n/a'; ?>
+			        <span class="span_acting">Eye Color</span>
+			        <span class="span_acting_second"><?php echo $ec; ?></span>
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+			        <?php $bu = ($tf1->getBust() != null && $tf1->getBust() != 0) ? $tf1->getBust() : 'n/a';?>
+			        <span class="span_acting">Bust</span>
+			        <span class="span_acting_second"><?php echo $bu; ?></span>
+		        </td>
+		        <td>
+			        <?php $wst = ($tf1->getWaist() != null && $tf1->getWaist() != 0) ? $tf1->getWaist() : 'n/a'; ?>
+			        <span class="span_acting">Waist</span>
+			        <span class="span_acting_second"><?php echo $wst; ?></span>
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+			        <?php $hips = ($tf1->getHips() != null && $tf1->getHips() != 0) ? $tf1->getHips() : 'n/a'; ?>
+			        <span class="span_acting">Hips</span>
+			        <span class="span_acting_second"><?php echo $hips; ?></span>
+		        </td>
+		        <td>
+			        <?php $dress = ($tf1->getDress() != null && $tf1->getDress() != 0) ? $tf1->getDress() : 'n/a';?>
+			        <span class="span_acting">Dress</span>
+			        <span class="span_acting_second"><?php echo $dress; ?></span>
+		        </td>
+		    </tr>
+		</table>
+    </div>
+</div>
+
+<?php if($this->resume != 'n/a'){ ?>
+<div class="border_tiny">
+<div class="home_advice">Short Resume
+    <?php if(LOGGEDIN && (USERID == $this->notme)){  ?>
+        <a class="profile_details_edit_white" href="/profile/social/edit/id/<?php echo $talentci->getTalentnum(); ?>/info/edit" title="Edit Social Info">
+            <span class="edit_profiles"></span>
+        </a>
+    <?php } ?>
+</div>
+	<?php echo $this->resume; ?>
+</div>
+<?php } ?>
+
+<?php if($this->about != 'n/a'){?>
+<div class="border_tiny">
+<div class="home_advice">About
+    <?php if(LOGGEDIN && (USERID == $this->notme)){  ?>
+        <a class="profile_details_edit_white" href="/profile/social/edit/id/<?php echo $talentci->getTalentnum(); ?>/info/edit" title="Edit Social Info">
+            <span class="edit_profiles"></span>
+        </a>
+    <?php } ?>
+</div>
+	<?php echo $this->about; ?>
+</div>
+<?php } ?>
+
+<div id="general_talentnum" class="<?php echo $talentci->getTalentnum(); ?>"></div>

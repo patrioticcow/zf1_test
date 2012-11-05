@@ -1,0 +1,23 @@
+<div class="audition_jobs_widget border_small">
+    <div class="module_title dblue dblue-bar">
+        <span>Auditions & Jobs</span>
+        <a href="#" id="aj_widget_a" class="view_all_friends">view all</a>
+    </div>
+    <div class="total_listings"><?php echo number_format($this->total);?> Current Listings</div>
+    <?php
+    foreach($this->data as $key=>$value){
+        echo "<h4>".ucwords($key)."<span>".$value['total']."</span></h4>";
+
+        echo "<ul class='aj_widget_ul'>";
+        foreach($value as $k=>$val)
+        {
+            if($k != 'total')
+            {
+                echo "<li class='aj_widget_li'><a href='/auditions/index/".$key."' title='".$k."'>".$k."<span>".$val."</span></a></li>";
+            }
+        }
+        echo "</ul>";
+    }
+    ?>
+    <div style="clear: both;"></div>
+</div>
